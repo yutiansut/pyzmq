@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>devices &mdash; PyZMQ 13.1.0 documentation</title>
+    <title>devices &mdash; PyZMQ 14.0.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '13.1.0',
+        VERSION:     '14.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/zeromq.ico"/>
-    <link rel="top" title="PyZMQ 13.1.0 documentation" href="../index.html" />
+    <link rel="top" title="PyZMQ 14.0.0 documentation" href="../index.html" />
     <link rel="up" title="The PyZMQ API" href="index.html" />
     <link rel="next" title="green" href="zmq.green.html" />
     <link rel="prev" title="zmq" href="zmq.html" /> 
@@ -65,20 +63,24 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">devices</a><ul>
+<li><a class="reference internal" href="#functions">Functions</a></li>
 <li><a class="reference internal" href="#module-zmq.devices">Module: <tt class="docutils literal"><span class="pre">zmq.devices</span></tt></a></li>
 <li><a class="reference internal" href="#base-devices">Base Devices</a><ul>
-<li><a class="reference internal" href="#processdevice"><tt class="docutils literal"><span class="pre">ProcessDevice</span></tt></a></li>
+<li><a class="reference internal" href="#device"><tt class="docutils literal"><span class="pre">Device</span></tt></a></li>
 <li><a class="reference internal" href="#threaddevice"><tt class="docutils literal"><span class="pre">ThreadDevice</span></tt></a></li>
+<li><a class="reference internal" href="#processdevice"><tt class="docutils literal"><span class="pre">ProcessDevice</span></tt></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#proxy-devices">Proxy Devices</a><ul>
-<li><a class="reference internal" href="#processproxy"><tt class="docutils literal"><span class="pre">ProcessProxy</span></tt></a></li>
+<li><a class="reference internal" href="#proxy"><tt class="docutils literal"><span class="pre">Proxy</span></tt></a></li>
 <li><a class="reference internal" href="#threadproxy"><tt class="docutils literal"><span class="pre">ThreadProxy</span></tt></a></li>
+<li><a class="reference internal" href="#processproxy"><tt class="docutils literal"><span class="pre">ProcessProxy</span></tt></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#monitoredqueue-devices">MonitoredQueue Devices</a><ul>
-<li><a class="reference internal" href="#processmonitoredqueue"><tt class="docutils literal"><span class="pre">ProcessMonitoredQueue</span></tt></a></li>
+<li><a class="reference internal" href="#monitoredqueue"><tt class="docutils literal"><span class="pre">MonitoredQueue</span></tt></a></li>
 <li><a class="reference internal" href="#threadmonitoredqueue"><tt class="docutils literal"><span class="pre">ThreadMonitoredQueue</span></tt></a></li>
+<li><a class="reference internal" href="#processmonitoredqueue"><tt class="docutils literal"><span class="pre">ProcessMonitoredQueue</span></tt></a></li>
 </ul>
 </li>
 </ul>
@@ -119,89 +121,199 @@
             
   <div class="section" id="devices">
 <h1>devices<a class="headerlink" href="#devices" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="zmq.device">
+<tt class="descclassname">zmq.</tt><tt class="descname">device</tt><big>(</big><em>device_type</em>, <em>frontend</em>, <em>backend</em><big>)</big><a class="headerlink" href="#zmq.device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start a zeromq device.</p>
+<div class="deprecated">
+<p><span>Deprecated since version libzmq-3.2: </span>Use zmq.proxy</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>device_type</strong> : (QUEUE, FORWARDER, STREAMER)</p>
+<blockquote>
+<div><p>The type of device to start.</p>
+</div></blockquote>
+<p><strong>frontend</strong> : Socket</p>
+<blockquote>
+<div><p>The Socket instance for the incoming traffic.</p>
+</div></blockquote>
+<p><strong>backend</strong> : Socket</p>
+<blockquote class="last">
+<div><p>The Socket instance for the outbound traffic.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="zmq.proxy">
+<tt class="descclassname">zmq.</tt><tt class="descname">proxy</tt><big>(</big><em>frontend</em>, <em>backend</em>, <em>capture</em><big>)</big><a class="headerlink" href="#zmq.proxy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start a zeromq proxy (replacement for device).</p>
+<div class="versionadded">
+<p><span>New in version libzmq-3.2.</span></p>
+</div>
+<div class="versionadded">
+<p><span>New in version 13.0.</span></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>frontend</strong> : Socket</p>
+<blockquote>
+<div><p>The Socket instance for the incoming traffic.</p>
+</div></blockquote>
+<p><strong>backend</strong> : Socket</p>
+<blockquote>
+<div><p>The Socket instance for the outbound traffic.</p>
+</div></blockquote>
+<p><strong>capture</strong> : Socket (optional)</p>
+<blockquote class="last">
+<div><p>The Socket instance for capturing traffic.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 <div class="section" id="module-zmq.devices">
 <span id="module-zmq-devices"></span><h2>Module: <a class="reference internal" href="#module-zmq.devices" title="zmq.devices"><tt class="xref py py-mod docutils literal"><span class="pre">zmq.devices</span></tt></a><a class="headerlink" href="#module-zmq.devices" title="Permalink to this headline">¶</a></h2>
 <p>0MQ Device classes for running in background threads or processes.</p>
 </div>
 <div class="section" id="base-devices">
 <h2>Base Devices<a class="headerlink" href="#base-devices" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="processdevice">
-<h3><a class="reference internal" href="#zmq.devices.ProcessDevice" title="zmq.devices.ProcessDevice"><tt class="xref py py-class docutils literal"><span class="pre">ProcessDevice</span></tt></a><a class="headerlink" href="#processdevice" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="device">
+<h3><a class="reference internal" href="#zmq.devices.Device" title="zmq.devices.Device"><tt class="xref py py-class docutils literal"><span class="pre">Device</span></tt></a><a class="headerlink" href="#device" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
-<dt id="zmq.devices.ProcessDevice">
-<em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">ProcessDevice</tt><big>(</big><em>device_type=3</em>, <em>in_type=None</em>, <em>out_type=None</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice" title="Permalink to this definition">¶</a></dt>
-<dd><p>A Device that will be run in a background Process.</p>
-<p>See Device for details.</p>
+<dt id="zmq.devices.Device">
+<em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">Device</tt><big>(</big><em>device_type=3</em>, <em>in_type=None</em>, <em>out_type=None</em><big>)</big><a class="headerlink" href="#zmq.devices.Device" title="Permalink to this definition">¶</a></dt>
+<dd><p>A 0MQ Device to be run in the background.</p>
+<p>You do not pass Socket instances to this, but rather Socket types:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Device</span><span class="p">(</span><span class="n">device_type</span><span class="p">,</span> <span class="n">in_socket_type</span><span class="p">,</span> <span class="n">out_socket_type</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For instance:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">dev</span> <span class="o">=</span> <span class="n">Device</span><span class="p">(</span><span class="n">zmq</span><span class="o">.</span><span class="n">QUEUE</span><span class="p">,</span> <span class="n">zmq</span><span class="o">.</span><span class="n">DEALER</span><span class="p">,</span> <span class="n">zmq</span><span class="o">.</span><span class="n">ROUTER</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Similar to zmq.device, but socket types instead of sockets themselves are
+passed, and the sockets are created in the work thread, to avoid issues
+with thread safety. As a result, additional bind_{in|out} and
+connect_{in|out} methods and setsockopt_{in|out} allow users to specify
+connections for the sockets.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>device_type</strong> : int</p>
+<blockquote>
+<div><p>The 0MQ Device type</p>
+</div></blockquote>
+<p><strong>{in|out}_type</strong> : int</p>
+<blockquote>
+<div><p>zmq socket types, to be passed later to context.socket(). e.g.
+zmq.PUB, zmq.SUB, zmq.REQ. If out_type is &lt; 0, then in_socket is used
+for both in_socket and out_socket.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Attributes:</th><td class="field-body"><p class="first"><strong>daemon</strong> : int</p>
+<blockquote>
+<div><p>sets whether the thread should be run as a daemon
+Default is true, because if it is false, the thread will not
+exit unless it is killed</p>
+</div></blockquote>
+<p><strong>context_factory</strong> : callable (class attribute)</p>
+<blockquote>
+<div><p>Function for creating the Context. This will be Context.instance
+in ThreadDevices, and Context in ProcessDevices.  The only reason
+it is not instance() in ProcessDevices is that there may be a stale
+Context instance already initialized, and the forked environment
+should <em>never</em> try to use it.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Methods:</th><td class="field-body"><p class="first"><strong>bind_{in_out}(iface)</strong> :</p>
+<blockquote>
+<div><p>passthrough for <tt class="docutils literal"><span class="pre">{in|out}_socket.bind(iface)</span></tt>, to be called in the thread</p>
+</div></blockquote>
+<p><strong>connect_{in_out}(iface)</strong> :</p>
+<blockquote>
+<div><p>passthrough for <tt class="docutils literal"><span class="pre">{in|out}_socket.connect(iface)</span></tt>, to be called in the
+thread</p>
+</div></blockquote>
+<p><strong>setsockopt_{in_out}(opt,value)</strong> :</p>
+<blockquote class="last">
+<div><p>passthrough for <tt class="docutils literal"><span class="pre">{in|out}_socket.setsockopt(opt,</span> <span class="pre">value)</span></tt>, to be called in
+the thread</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
-<dt id="zmq.devices.ProcessDevice.bind_in">
-<tt class="descname">bind_in</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice.bind_in" title="Permalink to this definition">¶</a></dt>
+<dt id="zmq.devices.Device.bind_in">
+<tt class="descname">bind_in</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.Device.bind_in" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enqueue ZMQ address for binding on in_socket.</p>
 <p>See zmq.Socket.bind for details.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="zmq.devices.ProcessDevice.bind_out">
-<tt class="descname">bind_out</tt><big>(</big><em>iface</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice.bind_out" title="Permalink to this definition">¶</a></dt>
+<dt id="zmq.devices.Device.bind_out">
+<tt class="descname">bind_out</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.Device.bind_out" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enqueue ZMQ address for binding on out_socket.</p>
 <p>See zmq.Socket.bind for details.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="zmq.devices.ProcessDevice.connect_in">
-<tt class="descname">connect_in</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice.connect_in" title="Permalink to this definition">¶</a></dt>
+<dt id="zmq.devices.Device.connect_in">
+<tt class="descname">connect_in</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.Device.connect_in" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enqueue ZMQ address for connecting on in_socket.</p>
 <p>See zmq.Socket.connect for details.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="zmq.devices.ProcessDevice.connect_out">
-<tt class="descname">connect_out</tt><big>(</big><em>iface</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice.connect_out" title="Permalink to this definition">¶</a></dt>
+<dt id="zmq.devices.Device.connect_out">
+<tt class="descname">connect_out</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.Device.connect_out" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enqueue ZMQ address for connecting on out_socket.</p>
 <p>See zmq.Socket.connect for details.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="zmq.devices.ProcessDevice.context_factory">
-<tt class="descname">context_factory</tt><big>(</big><em>io_threads=1</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice.context_factory" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Context</span></tt></p>
+<dl class="method">
+<dt id="zmq.devices.Device.join">
+<tt class="descname">join</tt><big>(</big><em>timeout=None</em><big>)</big><a class="headerlink" href="#zmq.devices.Device.join" title="Permalink to this definition">¶</a></dt>
+<dd><p>wait for me to finish, like Thread.join.</p>
+<p>Reimplemented appropriately by subclasses.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="zmq.devices.ProcessDevice.join">
-<tt class="descname">join</tt><big>(</big><em>timeout=None</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice.join" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="zmq.devices.ProcessDevice.launcher">
-<tt class="descname">launcher</tt><em class="property"> = None</em><a class="headerlink" href="#zmq.devices.ProcessDevice.launcher" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessDevice.run">
-<tt class="descname">run</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>The runner method.</p>
-<p>Do not call me directly, instead call <tt class="docutils literal"><span class="pre">self.start()</span></tt>, just like a
-Thread.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessDevice.setsockopt_in">
-<tt class="descname">setsockopt_in</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice.setsockopt_in" title="Permalink to this definition">¶</a></dt>
+<dt id="zmq.devices.Device.setsockopt_in">
+<tt class="descname">setsockopt_in</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.Device.setsockopt_in" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enqueue setsockopt(opt, value) for in_socket</p>
 <p>See zmq.Socket.setsockopt for details.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="zmq.devices.ProcessDevice.setsockopt_out">
-<tt class="descname">setsockopt_out</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice.setsockopt_out" title="Permalink to this definition">¶</a></dt>
+<dt id="zmq.devices.Device.setsockopt_out">
+<tt class="descname">setsockopt_out</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.Device.setsockopt_out" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enqueue setsockopt(opt, value) for out_socket</p>
 <p>See zmq.Socket.setsockopt for details.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="zmq.devices.ProcessDevice.start">
-<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice.start" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="zmq.devices.Device.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.devices.Device.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start the device. Override me in subclass for other launchers.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -213,92 +325,23 @@ Thread.</p>
 <em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">ThreadDevice</tt><big>(</big><em>device_type=3</em>, <em>in_type=None</em>, <em>out_type=None</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadDevice" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Device that will be run in a background Thread.</p>
 <p>See Device for details.</p>
-<dl class="method">
-<dt id="zmq.devices.ThreadDevice.bind_in">
-<tt class="descname">bind_in</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadDevice.bind_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for binding on in_socket.</p>
-<p>See zmq.Socket.bind for details.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="zmq.devices.ThreadDevice.bind_out">
-<tt class="descname">bind_out</tt><big>(</big><em>iface</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadDevice.bind_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for binding on out_socket.</p>
-<p>See zmq.Socket.bind for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadDevice.connect_in">
-<tt class="descname">connect_in</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadDevice.connect_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for connecting on in_socket.</p>
-<p>See zmq.Socket.connect for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadDevice.connect_out">
-<tt class="descname">connect_out</tt><big>(</big><em>iface</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadDevice.connect_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for connecting on out_socket.</p>
-<p>See zmq.Socket.connect for details.</p>
-</dd></dl>
-
-<dl class="classmethod">
-<dt id="zmq.devices.ThreadDevice.context_factory">
-<em class="property">classmethod </em><tt class="descname">context_factory</tt><big>(</big><em>io_threads=1</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadDevice.context_factory" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a global Context instance.</p>
-<p>Most single-threaded applications have a single, global Context.
-Use this method instead of passing around Context instances
-throughout your code.</p>
-<p>A common pattern for classes that depend on Contexts is to use
-a default argument to enable programs with multiple Contexts
-but not require the argument for simpler applications:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>class MyClass(object):</dt>
-<dd><dl class="first last docutils">
-<dt>def __init__(self, context=None):</dt>
-<dd>self.context = context or Context.instance()</dd>
-</dl>
-</dd>
-</dl>
-</div></blockquote>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadDevice.join">
-<tt class="descname">join</tt><big>(</big><em>timeout=None</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadDevice.join" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+</div>
+<div class="section" id="processdevice">
+<h3><a class="reference internal" href="#zmq.devices.ProcessDevice" title="zmq.devices.ProcessDevice"><tt class="xref py py-class docutils literal"><span class="pre">ProcessDevice</span></tt></a><a class="headerlink" href="#processdevice" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="zmq.devices.ProcessDevice">
+<em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">ProcessDevice</tt><big>(</big><em>device_type=3</em>, <em>in_type=None</em>, <em>out_type=None</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Device that will be run in a background Process.</p>
+<p>See Device for details.</p>
 <dl class="attribute">
-<dt id="zmq.devices.ThreadDevice.launcher">
-<tt class="descname">launcher</tt><em class="property"> = None</em><a class="headerlink" href="#zmq.devices.ThreadDevice.launcher" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadDevice.run">
-<tt class="descname">run</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.devices.ThreadDevice.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>The runner method.</p>
-<p>Do not call me directly, instead call <tt class="docutils literal"><span class="pre">self.start()</span></tt>, just like a
-Thread.</p>
+<dt id="zmq.devices.ProcessDevice.context_factory">
+<tt class="descname">context_factory</tt><big>(</big><em>io_threads=1</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice.context_factory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callable that returns a context. Typically either Context.instance or Context,
+depending on whether the device should share the global instance or not.</p>
+<p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Context</span></tt></p>
 </dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadDevice.setsockopt_in">
-<tt class="descname">setsockopt_in</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadDevice.setsockopt_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue setsockopt(opt, value) for in_socket</p>
-<p>See zmq.Socket.setsockopt for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadDevice.setsockopt_out">
-<tt class="descname">setsockopt_out</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadDevice.setsockopt_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue setsockopt(opt, value) for out_socket</p>
-<p>See zmq.Socket.setsockopt for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadDevice.start">
-<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.devices.ThreadDevice.start" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
@@ -306,100 +349,38 @@ Thread.</p>
 </div>
 <div class="section" id="proxy-devices">
 <h2>Proxy Devices<a class="headerlink" href="#proxy-devices" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="processproxy">
-<h3><a class="reference internal" href="#zmq.devices.ProcessProxy" title="zmq.devices.ProcessProxy"><tt class="xref py py-class docutils literal"><span class="pre">ProcessProxy</span></tt></a><a class="headerlink" href="#processproxy" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="proxy">
+<h3><a class="reference internal" href="#zmq.devices.Proxy" title="zmq.devices.Proxy"><tt class="xref py py-class docutils literal"><span class="pre">Proxy</span></tt></a><a class="headerlink" href="#proxy" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
-<dt id="zmq.devices.ProcessProxy">
-<em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">ProcessProxy</tt><big>(</big><em>in_type</em>, <em>out_type</em>, <em>mon_type=1</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessProxy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Proxy in a Process. See Proxy for more.</p>
+<dt id="zmq.devices.Proxy">
+<em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">Proxy</tt><big>(</big><em>in_type</em>, <em>out_type</em>, <em>mon_type=1</em><big>)</big><a class="headerlink" href="#zmq.devices.Proxy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Threadsafe Proxy object.</p>
+<p>See zmq.devices.Device for most of the spec. This subclass adds a
+&lt;method&gt;_mon version of each &lt;method&gt;_{in|out} method, for configuring the
+monitor socket.</p>
+<p>A Proxy is a 3-socket ZMQ Device that functions just like a
+QUEUE, except each message is also sent out on the monitor socket.</p>
+<p>A PUB socket is the most logical choice for the mon_socket, but it is not required.</p>
 <dl class="method">
-<dt id="zmq.devices.ProcessProxy.bind_in">
-<tt class="descname">bind_in</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessProxy.bind_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for binding on in_socket.</p>
-<p>See zmq.Socket.bind for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessProxy.bind_mon">
-<tt class="descname">bind_mon</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessProxy.bind_mon" title="Permalink to this definition">¶</a></dt>
+<dt id="zmq.devices.Proxy.bind_mon">
+<tt class="descname">bind_mon</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.Proxy.bind_mon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enqueue ZMQ address for binding on mon_socket.</p>
 <p>See zmq.Socket.bind for details.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="zmq.devices.ProcessProxy.bind_out">
-<tt class="descname">bind_out</tt><big>(</big><em>iface</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessProxy.bind_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for binding on out_socket.</p>
-<p>See zmq.Socket.bind for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessProxy.connect_in">
-<tt class="descname">connect_in</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessProxy.connect_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for connecting on in_socket.</p>
-<p>See zmq.Socket.connect for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessProxy.connect_mon">
-<tt class="descname">connect_mon</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessProxy.connect_mon" title="Permalink to this definition">¶</a></dt>
+<dt id="zmq.devices.Proxy.connect_mon">
+<tt class="descname">connect_mon</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.Proxy.connect_mon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enqueue ZMQ address for connecting on mon_socket.</p>
 <p>See zmq.Socket.bind for details.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="zmq.devices.ProcessProxy.connect_out">
-<tt class="descname">connect_out</tt><big>(</big><em>iface</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessProxy.connect_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for connecting on out_socket.</p>
-<p>See zmq.Socket.connect for details.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="zmq.devices.ProcessProxy.context_factory">
-<tt class="descname">context_factory</tt><big>(</big><em>io_threads=1</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessProxy.context_factory" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Context</span></tt></p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessProxy.join">
-<tt class="descname">join</tt><big>(</big><em>timeout=None</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessProxy.join" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="zmq.devices.ProcessProxy.launcher">
-<tt class="descname">launcher</tt><em class="property"> = None</em><a class="headerlink" href="#zmq.devices.ProcessProxy.launcher" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessProxy.run">
-<tt class="descname">run</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.devices.ProcessProxy.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessProxy.setsockopt_in">
-<tt class="descname">setsockopt_in</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessProxy.setsockopt_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue setsockopt(opt, value) for in_socket</p>
-<p>See zmq.Socket.setsockopt for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessProxy.setsockopt_mon">
-<tt class="descname">setsockopt_mon</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessProxy.setsockopt_mon" title="Permalink to this definition">¶</a></dt>
+<dt id="zmq.devices.Proxy.setsockopt_mon">
+<tt class="descname">setsockopt_mon</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.Proxy.setsockopt_mon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enqueue setsockopt(opt, value) for mon_socket</p>
 <p>See zmq.Socket.setsockopt for details.</p>
 </dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessProxy.setsockopt_out">
-<tt class="descname">setsockopt_out</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessProxy.setsockopt_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue setsockopt(opt, value) for out_socket</p>
-<p>See zmq.Socket.setsockopt for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessProxy.start">
-<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.devices.ProcessProxy.start" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
@@ -410,111 +391,15 @@ Thread.</p>
 <dt id="zmq.devices.ThreadProxy">
 <em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">ThreadProxy</tt><big>(</big><em>in_type</em>, <em>out_type</em>, <em>mon_type=1</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadProxy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Proxy in a Thread. See Proxy for more.</p>
-<dl class="method">
-<dt id="zmq.devices.ThreadProxy.bind_in">
-<tt class="descname">bind_in</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadProxy.bind_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for binding on in_socket.</p>
-<p>See zmq.Socket.bind for details.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="zmq.devices.ThreadProxy.bind_mon">
-<tt class="descname">bind_mon</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadProxy.bind_mon" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for binding on mon_socket.</p>
-<p>See zmq.Socket.bind for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadProxy.bind_out">
-<tt class="descname">bind_out</tt><big>(</big><em>iface</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadProxy.bind_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for binding on out_socket.</p>
-<p>See zmq.Socket.bind for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadProxy.connect_in">
-<tt class="descname">connect_in</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadProxy.connect_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for connecting on in_socket.</p>
-<p>See zmq.Socket.connect for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadProxy.connect_mon">
-<tt class="descname">connect_mon</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadProxy.connect_mon" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for connecting on mon_socket.</p>
-<p>See zmq.Socket.bind for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadProxy.connect_out">
-<tt class="descname">connect_out</tt><big>(</big><em>iface</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadProxy.connect_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for connecting on out_socket.</p>
-<p>See zmq.Socket.connect for details.</p>
-</dd></dl>
-
-<dl class="classmethod">
-<dt id="zmq.devices.ThreadProxy.context_factory">
-<em class="property">classmethod </em><tt class="descname">context_factory</tt><big>(</big><em>io_threads=1</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadProxy.context_factory" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a global Context instance.</p>
-<p>Most single-threaded applications have a single, global Context.
-Use this method instead of passing around Context instances
-throughout your code.</p>
-<p>A common pattern for classes that depend on Contexts is to use
-a default argument to enable programs with multiple Contexts
-but not require the argument for simpler applications:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>class MyClass(object):</dt>
-<dd><dl class="first last docutils">
-<dt>def __init__(self, context=None):</dt>
-<dd>self.context = context or Context.instance()</dd>
-</dl>
-</dd>
-</dl>
-</div></blockquote>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadProxy.join">
-<tt class="descname">join</tt><big>(</big><em>timeout=None</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadProxy.join" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="zmq.devices.ThreadProxy.launcher">
-<tt class="descname">launcher</tt><em class="property"> = None</em><a class="headerlink" href="#zmq.devices.ThreadProxy.launcher" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadProxy.run">
-<tt class="descname">run</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.devices.ThreadProxy.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadProxy.setsockopt_in">
-<tt class="descname">setsockopt_in</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadProxy.setsockopt_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue setsockopt(opt, value) for in_socket</p>
-<p>See zmq.Socket.setsockopt for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadProxy.setsockopt_mon">
-<tt class="descname">setsockopt_mon</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadProxy.setsockopt_mon" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue setsockopt(opt, value) for mon_socket</p>
-<p>See zmq.Socket.setsockopt for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadProxy.setsockopt_out">
-<tt class="descname">setsockopt_out</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadProxy.setsockopt_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue setsockopt(opt, value) for out_socket</p>
-<p>See zmq.Socket.setsockopt for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadProxy.start">
-<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.devices.ThreadProxy.start" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+</div>
+<div class="section" id="processproxy">
+<h3><a class="reference internal" href="#zmq.devices.ProcessProxy" title="zmq.devices.ProcessProxy"><tt class="xref py py-class docutils literal"><span class="pre">ProcessProxy</span></tt></a><a class="headerlink" href="#processproxy" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="zmq.devices.ProcessProxy">
+<em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">ProcessProxy</tt><big>(</big><em>in_type</em>, <em>out_type</em>, <em>mon_type=1</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessProxy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Proxy in a Process. See Proxy for more.</p>
 </dd></dl>
 
 </div>
@@ -523,21 +408,20 @@ but not require the argument for simpler applications:</p>
 <h2>MonitoredQueue Devices<a class="headerlink" href="#monitoredqueue-devices" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="zmq.devices.monitored_queue">
-<tt class="descclassname">zmq.devices.</tt><tt class="descname">monitored_queue</tt><big>(</big><em>in_socket</em>, <em>out_socket</em>, <em>mon_socket</em>, <em>in_prefix='in'</em>, <em>out_prefix='out'</em><big>)</big><a class="headerlink" href="#zmq.devices.monitored_queue" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">zmq.devices.</tt><tt class="descname">monitored_queue</tt><big>(</big><em>in_socket</em>, <em>out_socket</em>, <em>mon_socket</em>, <em>in_prefix=b'in'</em>, <em>out_prefix=b'out'</em><big>)</big><a class="headerlink" href="#zmq.devices.monitored_queue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start a monitored queue device.</p>
-<p>A monitored queue behaves just like a zmq QUEUE device as far as in_socket
-and out_socket are concerned, except that all messages <em>also</em> go out on
-mon_socket. mon_socket also prefixes the messages coming from each with a
-prefix, by default &#8216;in&#8217; and &#8216;out&#8217;, so all messages sent by mon_socket are
-multipart.</p>
-<p>The only difference between this and a QUEUE as far as in/out are
-concerned is that it works with two ROUTER sockets by swapping the IDENT
-prefixes.</p>
+<p>A monitored queue is very similar to the zmq.proxy device (monitored queue came first).</p>
+<p>Differences from zmq.proxy:</p>
+<ul class="simple">
+<li>monitored_queue supports both in and out being ROUTER sockets
+(via swapping IDENTITY prefixes).</li>
+<li>monitor messages are prefixed, making in and out messages distinguishable.</li>
+</ul>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>in_socket</strong> : Socket</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>in_socket</strong> : Socket</p>
 <blockquote>
 <div><p>One of the sockets to the Queue. Its messages will be prefixed with
 &#8216;in&#8217;.</p>
@@ -566,101 +450,19 @@ with an in/out prefix specifying which one it was.</p>
 </table>
 </dd></dl>
 
-<div class="section" id="processmonitoredqueue">
-<h3><a class="reference internal" href="#zmq.devices.ProcessMonitoredQueue" title="zmq.devices.ProcessMonitoredQueue"><tt class="xref py py-class docutils literal"><span class="pre">ProcessMonitoredQueue</span></tt></a><a class="headerlink" href="#processmonitoredqueue" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="monitoredqueue">
+<h3><a class="reference internal" href="#zmq.devices.MonitoredQueue" title="zmq.devices.MonitoredQueue"><tt class="xref py py-class docutils literal"><span class="pre">MonitoredQueue</span></tt></a><a class="headerlink" href="#monitoredqueue" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
-<dt id="zmq.devices.ProcessMonitoredQueue">
-<em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">ProcessMonitoredQueue</tt><big>(</big><em>in_type</em>, <em>out_type</em>, <em>mon_type=1</em>, <em>in_prefix='in'</em>, <em>out_prefix='out'</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue" title="Permalink to this definition">¶</a></dt>
-<dd><p>MonitoredQueue in a Process. See MonitoredQueue for more.</p>
-<dl class="method">
-<dt id="zmq.devices.ProcessMonitoredQueue.bind_in">
-<tt class="descname">bind_in</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue.bind_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for binding on in_socket.</p>
-<p>See zmq.Socket.bind for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessMonitoredQueue.bind_mon">
-<tt class="descname">bind_mon</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue.bind_mon" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for binding on mon_socket.</p>
-<p>See zmq.Socket.bind for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessMonitoredQueue.bind_out">
-<tt class="descname">bind_out</tt><big>(</big><em>iface</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue.bind_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for binding on out_socket.</p>
-<p>See zmq.Socket.bind for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessMonitoredQueue.connect_in">
-<tt class="descname">connect_in</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue.connect_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for connecting on in_socket.</p>
-<p>See zmq.Socket.connect for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessMonitoredQueue.connect_mon">
-<tt class="descname">connect_mon</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue.connect_mon" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for connecting on mon_socket.</p>
-<p>See zmq.Socket.bind for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessMonitoredQueue.connect_out">
-<tt class="descname">connect_out</tt><big>(</big><em>iface</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue.connect_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for connecting on out_socket.</p>
-<p>See zmq.Socket.connect for details.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="zmq.devices.ProcessMonitoredQueue.context_factory">
-<tt class="descname">context_factory</tt><big>(</big><em>io_threads=1</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue.context_factory" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Context</span></tt></p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessMonitoredQueue.join">
-<tt class="descname">join</tt><big>(</big><em>timeout=None</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue.join" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="zmq.devices.ProcessMonitoredQueue.launcher">
-<tt class="descname">launcher</tt><em class="property"> = None</em><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue.launcher" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessMonitoredQueue.run">
-<tt class="descname">run</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessMonitoredQueue.setsockopt_in">
-<tt class="descname">setsockopt_in</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue.setsockopt_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue setsockopt(opt, value) for in_socket</p>
-<p>See zmq.Socket.setsockopt for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessMonitoredQueue.setsockopt_mon">
-<tt class="descname">setsockopt_mon</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue.setsockopt_mon" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue setsockopt(opt, value) for mon_socket</p>
-<p>See zmq.Socket.setsockopt for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessMonitoredQueue.setsockopt_out">
-<tt class="descname">setsockopt_out</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue.setsockopt_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue setsockopt(opt, value) for out_socket</p>
-<p>See zmq.Socket.setsockopt for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ProcessMonitoredQueue.start">
-<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue.start" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dt id="zmq.devices.MonitoredQueue">
+<em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">MonitoredQueue</tt><big>(</big><em>in_type</em>, <em>out_type</em>, <em>mon_type=1</em>, <em>in_prefix='in'</em>, <em>out_prefix='out'</em><big>)</big><a class="headerlink" href="#zmq.devices.MonitoredQueue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for running monitored_queue in the background.</p>
+<p>See zmq.devices.Device for most of the spec. MonitoredQueue differs from Proxy,
+only in that it adds a <tt class="docutils literal"><span class="pre">prefix</span></tt> to messages sent on the monitor socket,
+with a different prefix for each direction.</p>
+<p>MQ also supports ROUTER on both sides, which zmq.proxy does not.</p>
+<p>If a message arrives on <cite>in_sock</cite>, it will be prefixed with <cite>in_prefix</cite> on the monitor socket.
+If it arrives on out_sock, it will be prefixed with <cite>out_prefix</cite>.</p>
+<p>A PUB socket is the most logical choice for the mon_socket, but it is not required.</p>
 </dd></dl>
 
 </div>
@@ -669,112 +471,18 @@ with an in/out prefix specifying which one it was.</p>
 <dl class="class">
 <dt id="zmq.devices.ThreadMonitoredQueue">
 <em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">ThreadMonitoredQueue</tt><big>(</big><em>in_type</em>, <em>out_type</em>, <em>mon_type=1</em>, <em>in_prefix='in'</em>, <em>out_prefix='out'</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadMonitoredQueue" title="Permalink to this definition">¶</a></dt>
-<dd><p>MonitoredQueue in a Thread. See MonitoredQueue for more.</p>
-<dl class="method">
-<dt id="zmq.devices.ThreadMonitoredQueue.bind_in">
-<tt class="descname">bind_in</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadMonitoredQueue.bind_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for binding on in_socket.</p>
-<p>See zmq.Socket.bind for details.</p>
+<dd><p>Run zmq.monitored_queue in a background thread.</p>
+<p>See MonitoredQueue and Proxy for details.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="zmq.devices.ThreadMonitoredQueue.bind_mon">
-<tt class="descname">bind_mon</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadMonitoredQueue.bind_mon" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for binding on mon_socket.</p>
-<p>See zmq.Socket.bind for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadMonitoredQueue.bind_out">
-<tt class="descname">bind_out</tt><big>(</big><em>iface</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadMonitoredQueue.bind_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for binding on out_socket.</p>
-<p>See zmq.Socket.bind for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadMonitoredQueue.connect_in">
-<tt class="descname">connect_in</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadMonitoredQueue.connect_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for connecting on in_socket.</p>
-<p>See zmq.Socket.connect for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadMonitoredQueue.connect_mon">
-<tt class="descname">connect_mon</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadMonitoredQueue.connect_mon" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for connecting on mon_socket.</p>
-<p>See zmq.Socket.bind for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadMonitoredQueue.connect_out">
-<tt class="descname">connect_out</tt><big>(</big><em>iface</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadMonitoredQueue.connect_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue ZMQ address for connecting on out_socket.</p>
-<p>See zmq.Socket.connect for details.</p>
-</dd></dl>
-
-<dl class="classmethod">
-<dt id="zmq.devices.ThreadMonitoredQueue.context_factory">
-<em class="property">classmethod </em><tt class="descname">context_factory</tt><big>(</big><em>io_threads=1</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadMonitoredQueue.context_factory" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a global Context instance.</p>
-<p>Most single-threaded applications have a single, global Context.
-Use this method instead of passing around Context instances
-throughout your code.</p>
-<p>A common pattern for classes that depend on Contexts is to use
-a default argument to enable programs with multiple Contexts
-but not require the argument for simpler applications:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>class MyClass(object):</dt>
-<dd><dl class="first last docutils">
-<dt>def __init__(self, context=None):</dt>
-<dd>self.context = context or Context.instance()</dd>
-</dl>
-</dd>
-</dl>
-</div></blockquote>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadMonitoredQueue.join">
-<tt class="descname">join</tt><big>(</big><em>timeout=None</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadMonitoredQueue.join" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="zmq.devices.ThreadMonitoredQueue.launcher">
-<tt class="descname">launcher</tt><em class="property"> = None</em><a class="headerlink" href="#zmq.devices.ThreadMonitoredQueue.launcher" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadMonitoredQueue.run">
-<tt class="descname">run</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.devices.ThreadMonitoredQueue.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadMonitoredQueue.setsockopt_in">
-<tt class="descname">setsockopt_in</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadMonitoredQueue.setsockopt_in" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue setsockopt(opt, value) for in_socket</p>
-<p>See zmq.Socket.setsockopt for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadMonitoredQueue.setsockopt_mon">
-<tt class="descname">setsockopt_mon</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadMonitoredQueue.setsockopt_mon" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue setsockopt(opt, value) for mon_socket</p>
-<p>See zmq.Socket.setsockopt for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadMonitoredQueue.setsockopt_out">
-<tt class="descname">setsockopt_out</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadMonitoredQueue.setsockopt_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enqueue setsockopt(opt, value) for out_socket</p>
-<p>See zmq.Socket.setsockopt for details.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="zmq.devices.ThreadMonitoredQueue.start">
-<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.devices.ThreadMonitoredQueue.start" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+</div>
+<div class="section" id="processmonitoredqueue">
+<h3><a class="reference internal" href="#zmq.devices.ProcessMonitoredQueue" title="zmq.devices.ProcessMonitoredQueue"><tt class="xref py py-class docutils literal"><span class="pre">ProcessMonitoredQueue</span></tt></a><a class="headerlink" href="#processmonitoredqueue" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="zmq.devices.ProcessMonitoredQueue">
+<em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">ProcessMonitoredQueue</tt><big>(</big><em>in_type</em>, <em>out_type</em>, <em>mon_type=1</em>, <em>in_prefix='in'</em>, <em>out_prefix='out'</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run zmq.monitored_queue in a background thread.</p>
+<p>See MonitoredQueue and Proxy for details.</p>
 </dd></dl>
 
 </div>
@@ -813,7 +521,7 @@ but not require the argument for simpler applications:</p>
         &copy; Copyright 2013, Brian E. Granger &amp; Min Ragan-Kelley.  
 ØMQ logo © iMatix Corportation, used under the Creative Commons Attribution-Share Alike 3.0 License.  
 Python logo ™ of the Python Software Foundation, used by Min RK with permission from the Foundation.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

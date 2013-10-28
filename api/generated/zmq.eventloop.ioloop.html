@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>eventloop.ioloop &mdash; PyZMQ 13.1.0 documentation</title>
+    <title>eventloop.ioloop &mdash; PyZMQ 14.0.0 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '13.1.0',
+        VERSION:     '14.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +24,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/zeromq.ico"/>
-    <link rel="top" title="PyZMQ 13.1.0 documentation" href="../../index.html" />
+    <link rel="top" title="PyZMQ 14.0.0 documentation" href="../../index.html" />
     <link rel="up" title="The PyZMQ API" href="../index.html" />
     <link rel="next" title="eventloop.zmqstream" href="zmq.eventloop.zmqstream.html" />
     <link rel="prev" title="green" href="../zmq.green.html" /> 
@@ -160,7 +158,7 @@ have tornado ≥ 3.0.</p>
 <dl class="class">
 <dt id="zmq.eventloop.ioloop.ZMQIOLoop">
 <em class="property">class </em><tt class="descclassname">zmq.eventloop.ioloop.</tt><tt class="descname">ZMQIOLoop</tt><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop" title="Permalink to this definition">¶</a></dt>
-<dd><p>ZMMQ subclass of tornado&#8217;s IOLoop</p>
+<dd><p>ZMQ subclass of tornado&#8217;s IOLoop</p>
 <dl class="attribute">
 <dt id="zmq.eventloop.ioloop.ZMQIOLoop.ERROR">
 <tt class="descname">ERROR</tt><em class="property"> = 24</em><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop.ERROR" title="Permalink to this definition">¶</a></dt>
@@ -218,10 +216,7 @@ have tornado ≥ 3.0.</p>
 <dl class="method">
 <dt id="zmq.eventloop.ioloop.ZMQIOLoop.close">
 <tt class="descname">close</tt><big>(</big><em>all_fds=False</em><big>)</big><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop.close" title="Permalink to this definition">¶</a></dt>
-<dd><p>override to use <em>method</em> to close FDs</p>
-<p>instead of os.close on everything, which doesn&#8217;t work on zmq Sockets.</p>
-<p>Should be fixed in a future tornado release.</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="classmethod">
 <dt id="zmq.eventloop.ioloop.ZMQIOLoop.configurable_base">
@@ -482,7 +477,7 @@ prior to calling this function.</p>
         &copy; Copyright 2013, Brian E. Granger &amp; Min Ragan-Kelley.  
 ØMQ logo © iMatix Corportation, used under the Creative Commons Attribution-Share Alike 3.0 License.  
 Python logo ™ of the Python Software Foundation, used by Min RK with permission from the Foundation.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>utils.jsonapi &mdash; PyZMQ 13.1.0 documentation</title>
+    <title>utils.jsonapi &mdash; PyZMQ 14.0.0 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '13.1.0',
+        VERSION:     '14.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,9 +24,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/zeromq.ico"/>
-    <link rel="top" title="PyZMQ 13.1.0 documentation" href="../../index.html" />
+    <link rel="top" title="PyZMQ 14.0.0 documentation" href="../../index.html" />
     <link rel="up" title="The PyZMQ API" href="../index.html" />
-    <link rel="next" title="utils.strtypes" href="zmq.utils.strtypes.html" />
+    <link rel="next" title="utils.monitor" href="zmq.utils.monitor.html" />
     <link rel="prev" title="ssh.tunnel" href="zmq.ssh.tunnel.html" /> 
   </head>
   <body>
@@ -47,7 +45,7 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="zmq.utils.strtypes.html" title="utils.strtypes"
+          <a href="zmq.utils.monitor.html" title="utils.monitor"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="zmq.ssh.tunnel.html" title="ssh.tunnel"
@@ -78,8 +76,8 @@
   <p class="topless"><a href="zmq.ssh.tunnel.html"
                         title="previous chapter">ssh.tunnel</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="zmq.utils.strtypes.html"
-                        title="next chapter">utils.strtypes</a></p>
+  <p class="topless"><a href="zmq.utils.monitor.html"
+                        title="next chapter">utils.monitor</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../../_sources/api/generated/zmq.utils.jsonapi.txt"
@@ -111,24 +109,12 @@
 <div class="section" id="module-zmq.utils.jsonapi">
 <span id="module-utils-jsonapi"></span><h2>Module: <tt class="xref py py-mod docutils literal"><span class="pre">utils.jsonapi</span></tt><a class="headerlink" href="#module-zmq.utils.jsonapi" title="Permalink to this headline">¶</a></h2>
 <p>Priority based json library imports.</p>
-<p>Use jsonapi.loads() and jsonapi.dumps() for guaranteed symmetry.</p>
-<p>Priority: simplejson &gt; jsonlib2 &gt; json</p>
-<p>Always serializes to bytes instead of unicode for zeromq compatibility.</p>
-<p>jsonapi.loads/dumps provide kwarg-compatibility with stdlib json.</p>
-<p>To override pyzmq&#8217;s choice of json library, you can simply override the loads/dumps
-methods, e.g.:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">ujson</span>
-<span class="kn">from</span> <span class="nn">zmq.utils</span> <span class="kn">import</span> <span class="n">jsonapi</span>
-<span class="n">jsonapi</span><span class="o">.</span><span class="n">jsonmod</span> <span class="o">=</span> <span class="n">ujson</span>
-<span class="c"># ujson doesn&#39;t support the `separators` kwarg we use, so force its own dumps:</span>
-<span class="n">jsonapi</span><span class="o">.</span><span class="n">dumps</span> <span class="o">=</span> <span class="n">ujson</span><span class="o">.</span><span class="n">dumps</span>
-</pre></div>
-</div>
-<p>To select the super-fast ujson module.  Note that using a different module such
-as ujson that does not support the same kwargs as stdlib json may break
-compatibility with other tools that depend on this, if used in the same process.
-A safer route is to just serialize your own messages yourself with your favorite
-library.</p>
+<p>Always serializes to bytes instead of unicode for zeromq compatibility
+on Python 2 and 3.</p>
+<p>Use <tt class="docutils literal"><span class="pre">jsonapi.loads()</span></tt> and <tt class="docutils literal"><span class="pre">jsonapi.dumps()</span></tt> for guaranteed symmetry.</p>
+<p>Priority: <tt class="docutils literal"><span class="pre">simplejson</span></tt> &gt; <tt class="docutils literal"><span class="pre">jsonlib2</span></tt> &gt; stdlib <tt class="docutils literal"><span class="pre">json</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">jsonapi.loads/dumps</span></tt> provide kwarg-compatibility with stdlib json.</p>
+<p><tt class="docutils literal"><span class="pre">jsonapi.jsonmod</span></tt> will be the module of the actual underlying implementation.</p>
 <div class="section" id="authors">
 <h3>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -142,12 +128,16 @@ library.</p>
 <dl class="function">
 <dt id="zmq.utils.jsonapi.dumps">
 <tt class="descclassname">zmq.utils.jsonapi.</tt><tt class="descname">dumps</tt><big>(</big><em>o</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#zmq.utils.jsonapi.dumps" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Serialize object to JSON bytes (utf-8).</p>
+<p>See jsonapi.jsonmod.dumps for details on kwargs.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="zmq.utils.jsonapi.loads">
 <tt class="descclassname">zmq.utils.jsonapi.</tt><tt class="descname">loads</tt><big>(</big><em>s</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#zmq.utils.jsonapi.loads" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Load object from JSON bytes (utf-8).</p>
+<p>See jsonapi.jsonmod.loads for details on kwargs.</p>
+</dd></dl>
 
 </div>
 </div>
@@ -168,7 +158,7 @@ library.</p>
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="zmq.utils.strtypes.html" title="utils.strtypes"
+          <a href="zmq.utils.monitor.html" title="utils.monitor"
              >next</a> |</li>
         <li class="right" >
           <a href="zmq.ssh.tunnel.html" title="ssh.tunnel"
@@ -184,7 +174,7 @@ library.</p>
         &copy; Copyright 2013, Brian E. Granger &amp; Min Ragan-Kelley.  
 ØMQ logo © iMatix Corportation, used under the Creative Commons Attribution-Share Alike 3.0 License.  
 Python logo ™ of the Python Software Foundation, used by Min RK with permission from the Foundation.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

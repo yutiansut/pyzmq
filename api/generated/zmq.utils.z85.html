@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>eventloop.minitornado.platform.windows &mdash; PyZMQ 13.1.0 documentation</title>
+    <title>utils.z85 &mdash; PyZMQ 14.0.0 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '13.1.0',
+        VERSION:     '14.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +24,10 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/zeromq.ico"/>
-    <link rel="top" title="PyZMQ 13.1.0 documentation" href="../../index.html" /> 
+    <link rel="top" title="PyZMQ 14.0.0 documentation" href="../../index.html" />
+    <link rel="up" title="The PyZMQ API" href="../index.html" />
+    <link rel="next" title="More Than Just Bindings" href="../../morethanbindings.html" />
+    <link rel="prev" title="utils.monitor" href="zmq.utils.monitor.html" /> 
   </head>
   <body>
 
@@ -43,10 +44,17 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="../../morethanbindings.html" title="More Than Just Bindings"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="zmq.utils.monitor.html" title="utils.monitor"
+             accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">home</a>|&nbsp;</li>
         <li><a href="../../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">API</a> &raquo;</li>
- 
+
+          <li><a href="../index.html" accesskey="U">The PyZMQ API</a> &raquo;</li> 
       </ul>
     </div>
 
@@ -54,15 +62,22 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">eventloop.minitornado.platform.windows</a><ul>
-<li><a class="reference internal" href="#module-eventloop-minitornado-platform-windows">Module: <tt class="docutils literal"><span class="pre">eventloop.minitornado.platform.windows</span></tt></a></li>
+<li><a class="reference internal" href="#">utils.z85</a><ul>
+<li><a class="reference internal" href="#module-zmq.utils.z85">Module: <tt class="docutils literal"><span class="pre">utils.z85</span></tt></a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="zmq.utils.monitor.html"
+                        title="previous chapter">utils.monitor</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../morethanbindings.html"
+                        title="next chapter">More Than Just Bindings</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../../_sources/api/generated/zmq.eventloop.minitornado.platform.windows.txt"
+    <li><a href="../../_sources/api/generated/zmq.utils.z85.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -86,10 +101,29 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="eventloop-minitornado-platform-windows">
-<h1>eventloop.minitornado.platform.windows<a class="headerlink" href="#eventloop-minitornado-platform-windows" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-eventloop-minitornado-platform-windows">
-<h2>Module: <tt class="xref py py-mod docutils literal"><span class="pre">eventloop.minitornado.platform.windows</span></tt><a class="headerlink" href="#module-eventloop-minitornado-platform-windows" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="utils-z85">
+<h1>utils.z85<a class="headerlink" href="#utils-z85" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-zmq.utils.z85">
+<span id="module-utils-z85"></span><h2>Module: <tt class="xref py py-mod docutils literal"><span class="pre">utils.z85</span></tt><a class="headerlink" href="#module-zmq.utils.z85" title="Permalink to this headline">¶</a></h2>
+<p>Python implementation of Z85 85-bit encoding</p>
+<p>Z85 encoding is a plaintext encoding for a bytestring interpreted as 32bit integers.
+Since the chunks are 32bit, a bytestring must be a multiple of 4 bytes.
+See ZMQ RFC 32 for details.</p>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="zmq.utils.z85.decode">
+<tt class="descclassname">zmq.utils.z85.</tt><tt class="descname">decode</tt><big>(</big><em>z85bytes</em><big>)</big><a class="headerlink" href="#zmq.utils.z85.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>decode Z85 bytes to raw bytes</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="zmq.utils.z85.encode">
+<tt class="descclassname">zmq.utils.z85.</tt><tt class="descname">encode</tt><big>(</big><em>rawbytes</em><big>)</big><a class="headerlink" href="#zmq.utils.z85.encode" title="Permalink to this definition">¶</a></dt>
+<dd><p>encode raw bytes into Z85</p>
+</dd></dl>
+
 </div>
 </div>
 
@@ -108,17 +142,24 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="../../morethanbindings.html" title="More Than Just Bindings"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="zmq.utils.monitor.html" title="utils.monitor"
+             >previous</a> |</li>
         <li><a href="../../index.html">home</a>|&nbsp;</li>
         <li><a href="../../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">API</a> &raquo;</li>
- 
+
+          <li><a href="../index.html" >The PyZMQ API</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2013, Brian E. Granger &amp; Min Ragan-Kelley.  
 ØMQ logo © iMatix Corportation, used under the Creative Commons Attribution-Share Alike 3.0 License.  
 Python logo ™ of the Python Software Foundation, used by Min RK with permission from the Foundation.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>
