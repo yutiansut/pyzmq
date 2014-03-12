@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Index &mdash; PyZMQ 14.0.1 documentation</title>
+    <title>Index &mdash; PyZMQ 14.1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '14.0.1',
+        VERSION:     '14.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/zeromq.ico"/>
-    <link rel="top" title="PyZMQ 14.0.1 documentation" href="index.html" /> 
+    <link rel="top" title="PyZMQ 14.1.0 documentation" href="index.html" /> 
   </head>
   <body>
 
@@ -130,8 +130,6 @@
   <dt><a href="api/generated/zmq.eventloop.ioloop.html#zmq.eventloop.ioloop.ZMQIOLoop.add_timeout">add_timeout() (zmq.eventloop.ioloop.ZMQIOLoop method)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/generated/zmq.log.handlers.html#zmq.log.handlers.PUBHandler.addFilter">addFilter() (zmq.log.handlers.PUBHandler method)</a>
   </dt>
@@ -142,6 +140,8 @@
   </dt>
 
       </dl></dd>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/generated/zmq.log.handlers.html#zmq.log.handlers.TopicLogger.addHandler">addHandler() (zmq.log.handlers.TopicLogger method)</a>
   </dt>
@@ -155,7 +155,25 @@
   </dt>
 
       
+  <dt><a href="api/zmq.auth.html#zmq.auth.Authenticator.allow">allow() (zmq.auth.Authenticator method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="api/zmq.auth.ioloop.html#zmq.auth.ioloop.IOLoopAuthenticator.allow">(zmq.auth.ioloop.IOLoopAuthenticator method)</a>
+  </dt>
+
+        
+  <dt><a href="api/zmq.auth.thread.html#zmq.auth.thread.ThreadAuthenticator.allow">(zmq.auth.thread.ThreadAuthenticator method)</a>
+  </dt>
+
+      </dl></dd>
+      
   <dt><a href="api/generated/zmq.ssh.forward.html#zmq.ssh.forward.ForwardServer.allow_reuse_address">allow_reuse_address (zmq.ssh.forward.ForwardServer attribute)</a>
+  </dt>
+
+      
+  <dt><a href="api/zmq.auth.html#zmq.auth.Authenticator">Authenticator (class in zmq.auth)</a>
   </dt>
 
   </dl></td>
@@ -202,6 +220,10 @@
   <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/generated/zmq.log.handlers.html#zmq.log.handlers.TopicLogger.callHandlers">callHandlers() (zmq.log.handlers.TopicLogger method)</a>
+  </dt>
+
+      
+  <dt><a href="api/generated/zmq.utils.interop.html#zmq.utils.interop.cast_int_addr">cast_int_addr() (in module zmq.utils.interop)</a>
   </dt>
 
       
@@ -261,15 +283,43 @@
   </dt>
 
       
-  <dt><a href="api/generated/zmq.eventloop.ioloop.html#zmq.eventloop.ioloop.ZMQIOLoop.configured_class">configured_class() (zmq.eventloop.ioloop.ZMQIOLoop class method)</a>
+  <dt><a href="api/zmq.auth.html#zmq.auth.Authenticator.configure_curve">configure_curve() (zmq.auth.Authenticator method)</a>
   </dt>
 
+      <dd><dl>
+        
+  <dt><a href="api/zmq.auth.ioloop.html#zmq.auth.ioloop.IOLoopAuthenticator.configure_curve">(zmq.auth.ioloop.IOLoopAuthenticator method)</a>
+  </dt>
+
+        
+  <dt><a href="api/zmq.auth.thread.html#zmq.auth.thread.ThreadAuthenticator.configure_curve">(zmq.auth.thread.ThreadAuthenticator method)</a>
+  </dt>
+
+      </dl></dd>
       
-  <dt><a href="api/zmq.html#zmq.Socket.connect">connect() (zmq.Socket method)</a>
+  <dt><a href="api/zmq.auth.html#zmq.auth.Authenticator.configure_plain">configure_plain() (zmq.auth.Authenticator method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="api/zmq.auth.ioloop.html#zmq.auth.ioloop.IOLoopAuthenticator.configure_plain">(zmq.auth.ioloop.IOLoopAuthenticator method)</a>
+  </dt>
+
+        
+  <dt><a href="api/zmq.auth.thread.html#zmq.auth.thread.ThreadAuthenticator.configure_plain">(zmq.auth.thread.ThreadAuthenticator method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="api/generated/zmq.eventloop.ioloop.html#zmq.eventloop.ioloop.ZMQIOLoop.configured_class">configured_class() (zmq.eventloop.ioloop.ZMQIOLoop class method)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="api/zmq.html#zmq.Socket.connect">connect() (zmq.Socket method)</a>
+  </dt>
+
       
   <dt><a href="api/zmq.devices.html#zmq.devices.Device.connect_in">connect_in() (zmq.devices.Device method)</a>
   </dt>
@@ -292,6 +342,10 @@
 
       
   <dt><a href="api/zmq.html#zmq.ContextTerminated">ContextTerminated (class in zmq)</a>
+  </dt>
+
+      
+  <dt><a href="api/zmq.auth.html#zmq.auth.create_certificates">create_certificates() (in module zmq.auth)</a>
   </dt>
 
       
@@ -332,6 +386,20 @@
   <dt><a href="api/generated/zmq.eventloop.ioloop.html#zmq.eventloop.ioloop.DelayedCallback">DelayedCallback (class in zmq.eventloop.ioloop)</a>
   </dt>
 
+      
+  <dt><a href="api/zmq.auth.html#zmq.auth.Authenticator.deny">deny() (zmq.auth.Authenticator method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="api/zmq.auth.ioloop.html#zmq.auth.ioloop.IOLoopAuthenticator.deny">(zmq.auth.ioloop.IOLoopAuthenticator method)</a>
+  </dt>
+
+        
+  <dt><a href="api/zmq.auth.thread.html#zmq.auth.thread.ThreadAuthenticator.deny">(zmq.auth.thread.ThreadAuthenticator method)</a>
+  </dt>
+
+      </dl></dd>
       
   <dt><a href="api/zmq.html#zmq.Context.destroy">destroy() (zmq.Context method)</a>
   </dt>
@@ -479,7 +547,7 @@
   </dt>
 
       
-  <dt><a href="api/zmq.html#zmq.get_includes">get_includes() (in module zmq)</a>, <a href="api/generated/zmq.html#zmq.get_includes">[1]</a>
+  <dt><a href="api/generated/zmq.html#zmq.get_includes">get_includes() (in module zmq)</a>, <a href="api/zmq.html#zmq.get_includes">[1]</a>
   </dt>
 
       
@@ -554,12 +622,22 @@
   <dt><a href="api/generated/zmq.ssh.forward.html#zmq.ssh.forward.ForwardServer.handle_request">handle_request() (zmq.ssh.forward.ForwardServer method)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/generated/zmq.ssh.forward.html#zmq.ssh.forward.ForwardServer.handle_timeout">handle_timeout() (zmq.ssh.forward.ForwardServer method)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="api/zmq.auth.html#zmq.auth.Authenticator.handle_zap_message">handle_zap_message() (zmq.auth.Authenticator method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="api/zmq.auth.ioloop.html#zmq.auth.ioloop.IOLoopAuthenticator.handle_zap_message">(zmq.auth.ioloop.IOLoopAuthenticator method)</a>
+  </dt>
+
+      </dl></dd>
       
   <dt><a href="api/generated/zmq.log.handlers.html#zmq.log.handlers.PUBHandler.handleError">handleError() (zmq.log.handlers.PUBHandler method)</a>
   </dt>
@@ -600,8 +678,6 @@
   </dt>
 
       </dl></dd>
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/zmq.html#zmq.Context.instance">instance() (zmq.Context class method)</a>
   </dt>
@@ -612,8 +688,18 @@
   </dt>
 
       </dl></dd>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/generated/zmq.eventloop.zmqstream.html#zmq.eventloop.zmqstream.ZMQStream.io_loop">io_loop (zmq.eventloop.zmqstream.ZMQStream attribute)</a>
+  </dt>
+
+      
+  <dt><a href="api/zmq.auth.ioloop.html#zmq.auth.ioloop.IOLoopAuthenticator">IOLoopAuthenticator (class in zmq.auth.ioloop)</a>
+  </dt>
+
+      
+  <dt><a href="api/zmq.auth.thread.html#zmq.auth.thread.ThreadAuthenticator.is_alive">is_alive() (zmq.auth.thread.ThreadAuthenticator method)</a>
   </dt>
 
       
@@ -637,15 +723,23 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/generated/zmq.utils.jsonapi.html#zmq.utils.jsonapi.loads">loads() (in module zmq.utils.jsonapi)</a>
+  <dt><a href="api/zmq.auth.html#zmq.auth.load_certificate">load_certificate() (in module zmq.auth)</a>
   </dt>
 
       
-  <dt><a href="api/generated/zmq.log.handlers.html#zmq.log.handlers.TopicLogger.log">log() (zmq.log.handlers.TopicLogger method)</a>
+  <dt><a href="api/zmq.auth.html#zmq.auth.load_certificates">load_certificates() (in module zmq.auth)</a>
+  </dt>
+
+      
+  <dt><a href="api/generated/zmq.utils.jsonapi.html#zmq.utils.jsonapi.loads">loads() (in module zmq.utils.jsonapi)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="api/generated/zmq.log.handlers.html#zmq.log.handlers.TopicLogger.log">log() (zmq.log.handlers.TopicLogger method)</a>
+  </dt>
+
       
   <dt><a href="api/generated/zmq.eventloop.ioloop.html#zmq.eventloop.ioloop.ZMQIOLoop.log_stack">log_stack() (zmq.eventloop.ioloop.ZMQIOLoop method)</a>
   </dt>
@@ -1080,18 +1174,32 @@
   <dt><a href="api/zmq.devices.html#zmq.devices.Proxy.setsockopt_mon">setsockopt_mon() (zmq.devices.Proxy method)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/zmq.devices.html#zmq.devices.Device.setsockopt_out">setsockopt_out() (zmq.devices.Device method)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/zmq.html#zmq.Socket.setsockopt_string">setsockopt_string() (zmq.Socket method)</a>
   </dt>
 
       
   <dt><a href="api/generated/zmq.ssh.forward.html#zmq.ssh.forward.Handler.setup">setup() (zmq.ssh.forward.Handler method)</a>
+  </dt>
+
+      
+  <dt><a href="api/zmq.html#zmq.Context.shadow">shadow() (zmq.Context class method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="api/zmq.html#zmq.Socket.shadow">(zmq.Socket class method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="api/zmq.html#zmq.Context.shadow_pyczmq">shadow_pyczmq() (zmq.Context class method)</a>
   </dt>
 
       
@@ -1171,10 +1279,22 @@
 
       </dl></dd>
       
-  <dt><a href="api/zmq.devices.html#zmq.devices.Device.start">start() (zmq.devices.Device method)</a>
+  <dt><a href="api/zmq.auth.html#zmq.auth.Authenticator.start">start() (zmq.auth.Authenticator method)</a>
   </dt>
 
       <dd><dl>
+        
+  <dt><a href="api/zmq.auth.ioloop.html#zmq.auth.ioloop.IOLoopAuthenticator.start">(zmq.auth.ioloop.IOLoopAuthenticator method)</a>
+  </dt>
+
+        
+  <dt><a href="api/zmq.auth.thread.html#zmq.auth.thread.ThreadAuthenticator.start">(zmq.auth.thread.ThreadAuthenticator method)</a>
+  </dt>
+
+        
+  <dt><a href="api/zmq.devices.html#zmq.devices.Device.start">(zmq.devices.Device method)</a>
+  </dt>
+
         
   <dt><a href="api/generated/zmq.eventloop.ioloop.html#zmq.eventloop.ioloop.DelayedCallback.start">(zmq.eventloop.ioloop.DelayedCallback method)</a>
   </dt>
@@ -1185,10 +1305,22 @@
 
       </dl></dd>
       
-  <dt><a href="api/generated/zmq.eventloop.ioloop.html#zmq.eventloop.ioloop.DelayedCallback.stop">stop() (zmq.eventloop.ioloop.DelayedCallback method)</a>
+  <dt><a href="api/zmq.auth.html#zmq.auth.Authenticator.stop">stop() (zmq.auth.Authenticator method)</a>
   </dt>
 
       <dd><dl>
+        
+  <dt><a href="api/zmq.auth.ioloop.html#zmq.auth.ioloop.IOLoopAuthenticator.stop">(zmq.auth.ioloop.IOLoopAuthenticator method)</a>
+  </dt>
+
+        
+  <dt><a href="api/zmq.auth.thread.html#zmq.auth.thread.ThreadAuthenticator.stop">(zmq.auth.thread.ThreadAuthenticator method)</a>
+  </dt>
+
+        
+  <dt><a href="api/generated/zmq.eventloop.ioloop.html#zmq.eventloop.ioloop.DelayedCallback.stop">(zmq.eventloop.ioloop.DelayedCallback method)</a>
+  </dt>
+
         
   <dt><a href="api/generated/zmq.eventloop.ioloop.html#zmq.eventloop.ioloop.ZMQIOLoop.stop">(zmq.eventloop.ioloop.ZMQIOLoop method)</a>
   </dt>
@@ -1217,6 +1349,10 @@
   </dt>
 
       
+  <dt><a href="api/zmq.auth.thread.html#zmq.auth.thread.ThreadAuthenticator">ThreadAuthenticator (class in zmq.auth.thread)</a>
+  </dt>
+
+      
   <dt><a href="api/zmq.devices.html#zmq.devices.ThreadDevice">ThreadDevice (class in zmq.devices)</a>
   </dt>
 
@@ -1228,12 +1364,12 @@
   <dt><a href="api/zmq.devices.html#zmq.devices.ThreadProxy">ThreadProxy (class in zmq.devices)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/generated/zmq.eventloop.ioloop.html#zmq.eventloop.ioloop.ZMQIOLoop.time">time() (zmq.eventloop.ioloop.ZMQIOLoop method)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/generated/zmq.ssh.forward.html#zmq.ssh.forward.ForwardServer.timeout">timeout (zmq.ssh.forward.ForwardServer attribute)</a>
   </dt>
@@ -1261,6 +1397,18 @@
   </dt>
 
       
+  <dt><a href="api/zmq.html#zmq.Context.underlying">underlying (zmq.Context attribute)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="api/zmq.html#zmq.Socket.underlying">(zmq.Socket attribute)</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
   <dt><a href="api/generated/zmq.eventloop.ioloop.html#zmq.eventloop.ioloop.ZMQPoller.unregister">unregister() (zmq.eventloop.ioloop.ZMQPoller method)</a>
   </dt>
 
@@ -1270,8 +1418,6 @@
   </dt>
 
       </dl></dd>
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/generated/zmq.eventloop.ioloop.html#zmq.eventloop.ioloop.ZMQIOLoop.update_handler">update_handler() (zmq.eventloop.ioloop.ZMQIOLoop method)</a>
   </dt>
@@ -1317,7 +1463,19 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/zmq.html#module-zmq">zmq (module)</a>, <a href="api/generated/zmq.html#module-zmq">[1]</a>
+  <dt><a href="api/generated/zmq.html#module-zmq">zmq (module)</a>, <a href="api/zmq.html#module-zmq">[1]</a>
+  </dt>
+
+      
+  <dt><a href="api/zmq.auth.html#module-zmq.auth">zmq.auth (module)</a>
+  </dt>
+
+      
+  <dt><a href="api/zmq.auth.ioloop.html#module-zmq.auth.ioloop">zmq.auth.ioloop (module)</a>
+  </dt>
+
+      
+  <dt><a href="api/zmq.auth.thread.html#module-zmq.auth.thread">zmq.auth.thread (module)</a>
   </dt>
 
       
@@ -1348,12 +1506,16 @@
   <dt><a href="api/generated/zmq.ssh.tunnel.html#module-zmq.ssh.tunnel">zmq.ssh.tunnel (module)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="api/generated/zmq.utils.interop.html#module-zmq.utils.interop">zmq.utils.interop (module)</a>
+  </dt>
+
       
   <dt><a href="api/generated/zmq.utils.jsonapi.html#module-zmq.utils.jsonapi">zmq.utils.jsonapi (module)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/generated/zmq.utils.monitor.html#module-zmq.utils.monitor">zmq.utils.monitor (module)</a>
   </dt>
@@ -1419,7 +1581,7 @@
         &copy; Copyright 2013, Brian E. Granger &amp; Min Ragan-Kelley.  
 ØMQ logo © iMatix Corportation, used under the Creative Commons Attribution-Share Alike 3.0 License.  
 Python logo ™ of the Python Software Foundation, used by Min RK with permission from the Foundation.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>zmq &mdash; PyZMQ 14.1.0 documentation</title>
+    <title>utils.interop &mdash; PyZMQ 14.1.0 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -52,15 +52,15 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">zmq</a><ul>
-<li><a class="reference internal" href="#id1"><tt class="docutils literal"><span class="pre">zmq</span></tt></a></li>
+<li><a class="reference internal" href="#">utils.interop</a><ul>
+<li><a class="reference internal" href="#module-zmq.utils.interop">Module: <tt class="docutils literal"><span class="pre">utils.interop</span></tt></a></li>
 </ul>
 </li>
 </ul>
 
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../../_sources/api/generated/zmq.txt"
+    <li><a href="../../_sources/api/generated/zmq.utils.interop.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -84,15 +84,17 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="zmq">
-<h1>zmq<a class="headerlink" href="#zmq" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id1">
-<h2><a class="reference internal" href="../zmq.html#module-zmq" title="zmq"><tt class="xref py py-mod docutils literal"><span class="pre">zmq</span></tt></a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-zmq"></span><p>Python bindings for 0MQ.</p>
+  <div class="section" id="utils-interop">
+<h1>utils.interop<a class="headerlink" href="#utils-interop" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-zmq.utils.interop">
+<span id="module-utils-interop"></span><h2>Module: <tt class="xref py py-mod docutils literal"><span class="pre">utils.interop</span></tt><a class="headerlink" href="#module-zmq.utils.interop" title="Permalink to this headline">¶</a></h2>
+<p>Utils for interoperability with other libraries.</p>
+<p>Just CFFI pointer casting for now.</p>
 <dl class="function">
-<dt id="zmq.get_includes">
-<tt class="descclassname">zmq.</tt><tt class="descname">get_includes</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.get_includes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a list of directories to include for linking against pyzmq with cython.</p>
+<dt id="zmq.utils.interop.cast_int_addr">
+<tt class="descclassname">zmq.utils.interop.</tt><tt class="descname">cast_int_addr</tt><big>(</big><em>n</em><big>)</big><a class="headerlink" href="#zmq.utils.interop.cast_int_addr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cast an address to a Python int</p>
+<p>This could be a Python integer or a CFFI pointer</p>
 </dd></dl>
 
 </div>

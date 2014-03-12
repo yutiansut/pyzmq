@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>devices &mdash; PyZMQ 14.0.1 documentation</title>
+    <title>devices &mdash; PyZMQ 14.1.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.0.1',
+        VERSION:     '14.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/zeromq.ico"/>
-    <link rel="top" title="PyZMQ 14.0.1 documentation" href="../index.html" />
+    <link rel="top" title="PyZMQ 14.1.0 documentation" href="../index.html" />
     <link rel="up" title="The PyZMQ API" href="index.html" />
     <link rel="next" title="green" href="zmq.green.html" />
     <link rel="prev" title="zmq" href="zmq.html" /> 
@@ -128,7 +128,7 @@
 <tt class="descclassname">zmq.</tt><tt class="descname">device</tt><big>(</big><em>device_type</em>, <em>frontend</em>, <em>backend</em><big>)</big><a class="headerlink" href="#zmq.device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start a zeromq device.</p>
 <div class="deprecated">
-<p><span>Deprecated since version libzmq-3.2: </span>Use zmq.proxy</p>
+<p><span class="versionmodified">Deprecated since version libzmq-3.2: </span>Use zmq.proxy</p>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -157,10 +157,10 @@
 <tt class="descclassname">zmq.</tt><tt class="descname">proxy</tt><big>(</big><em>frontend</em>, <em>backend</em>, <em>capture</em><big>)</big><a class="headerlink" href="#zmq.proxy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start a zeromq proxy (replacement for device).</p>
 <div class="versionadded">
-<p><span>New in version libzmq-3.2.</span></p>
+<p><span class="versionmodified">New in version libzmq-3.2.</span></p>
 </div>
 <div class="versionadded">
-<p><span>New in version 13.0.</span></p>
+<p><span class="versionmodified">New in version 13.0.</span></p>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -337,7 +337,7 @@ the thread</p>
 <p>See Device for details.</p>
 <dl class="attribute">
 <dt id="zmq.devices.ProcessDevice.context_factory">
-<tt class="descname">context_factory</tt><big>(</big><em>io_threads=1</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice.context_factory" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">context_factory</tt><big>(</big><em>io_threads=1</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice.context_factory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Callable that returns a context. Typically either Context.instance or Context,
 depending on whether the device should share the global instance or not.</p>
 <p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Context</span></tt></p>
@@ -521,7 +521,7 @@ If it arrives on out_sock, it will be prefixed with <cite>out_prefix</cite>.</p>
         &copy; Copyright 2013, Brian E. Granger &amp; Min Ragan-Kelley.  
 ØMQ logo © iMatix Corportation, used under the Creative Commons Attribution-Share Alike 3.0 License.  
 Python logo ™ of the Python Software Foundation, used by Min RK with permission from the Foundation.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

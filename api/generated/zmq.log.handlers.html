@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>log.handlers &mdash; PyZMQ 14.0.1 documentation</title>
+    <title>log.handlers &mdash; PyZMQ 14.1.0 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.0.1',
+        VERSION:     '14.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,10 +24,10 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/zeromq.ico"/>
-    <link rel="top" title="PyZMQ 14.0.1 documentation" href="../../index.html" />
+    <link rel="top" title="PyZMQ 14.1.0 documentation" href="../../index.html" />
     <link rel="up" title="The PyZMQ API" href="../index.html" />
     <link rel="next" title="ssh.tunnel" href="zmq.ssh.tunnel.html" />
-    <link rel="prev" title="eventloop.zmqstream" href="zmq.eventloop.zmqstream.html" /> 
+    <link rel="prev" title="auth.ioloop" href="../zmq.auth.ioloop.html" /> 
   </head>
   <body>
 
@@ -48,7 +48,7 @@
           <a href="zmq.ssh.tunnel.html" title="ssh.tunnel"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="zmq.eventloop.zmqstream.html" title="eventloop.zmqstream"
+          <a href="../zmq.auth.ioloop.html" title="auth.ioloop"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">home</a>|&nbsp;</li>
         <li><a href="../../search.html">search</a>|&nbsp;</li>
@@ -77,8 +77,8 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="zmq.eventloop.zmqstream.html"
-                        title="previous chapter">eventloop.zmqstream</a></p>
+  <p class="topless"><a href="../zmq.auth.ioloop.html"
+                        title="previous chapter">auth.ioloop</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="zmq.ssh.tunnel.html"
                         title="next chapter">ssh.tunnel</a></p>
@@ -219,7 +219,7 @@ subclasses.</p>
 
 <dl class="attribute">
 <dt id="zmq.log.handlers.PUBHandler.formatters">
-<tt class="descname">formatters</tt><em class="property"> = {40: &lt;logging.Formatter object at 0x108fca550&gt;, 10: &lt;logging.Formatter object at 0x108fca490&gt;, 20: &lt;logging.Formatter object at 0x108fca4d0&gt;, 50: &lt;logging.Formatter object at 0x108fca590&gt;, 30: &lt;logging.Formatter object at 0x108fca510&gt;}</em><a class="headerlink" href="#zmq.log.handlers.PUBHandler.formatters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">formatters</tt><em class="property"> = {40: &lt;logging.Formatter object at 0x105401050&gt;, 10: &lt;logging.Formatter object at 0x1051e6f50&gt;, 20: &lt;logging.Formatter object at 0x1051e6f90&gt;, 50: &lt;logging.Formatter object at 0x105401090&gt;, 30: &lt;logging.Formatter object at 0x1051e6fd0&gt;}</em><a class="headerlink" href="#zmq.log.handlers.PUBHandler.formatters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -252,7 +252,7 @@ The record which was being processed is passed in to this method.</p>
 
 <dl class="attribute">
 <dt id="zmq.log.handlers.PUBHandler.name">
-<tt class="descname">name</tt><em class="property"> None</em><a class="headerlink" href="#zmq.log.handlers.PUBHandler.name" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">name</tt><a class="headerlink" href="#zmq.log.handlers.PUBHandler.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -442,7 +442,7 @@ specialized LogRecords.</p>
 
 <dl class="attribute">
 <dt id="zmq.log.handlers.TopicLogger.manager">
-<tt class="descname">manager</tt><em class="property"> = &lt;logging.Manager object at 0x1075ff6d0&gt;</em><a class="headerlink" href="#zmq.log.handlers.TopicLogger.manager" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">manager</tt><em class="property"> = &lt;logging.Manager object at 0x1031928d0&gt;</em><a class="headerlink" href="#zmq.log.handlers.TopicLogger.manager" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -459,7 +459,7 @@ specialized LogRecords.</p>
 
 <dl class="attribute">
 <dt id="zmq.log.handlers.TopicLogger.root">
-<tt class="descname">root</tt><em class="property"> = &lt;logging.RootLogger object at 0x1075ff610&gt;</em><a class="headerlink" href="#zmq.log.handlers.TopicLogger.root" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">root</tt><em class="property"> = &lt;logging.RootLogger object at 0x103192810&gt;</em><a class="headerlink" href="#zmq.log.handlers.TopicLogger.root" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -503,7 +503,7 @@ specialized LogRecords.</p>
           <a href="zmq.ssh.tunnel.html" title="ssh.tunnel"
              >next</a> |</li>
         <li class="right" >
-          <a href="zmq.eventloop.zmqstream.html" title="eventloop.zmqstream"
+          <a href="../zmq.auth.ioloop.html" title="auth.ioloop"
              >previous</a> |</li>
         <li><a href="../../index.html">home</a>|&nbsp;</li>
         <li><a href="../../search.html">search</a>|&nbsp;</li>
@@ -516,7 +516,7 @@ specialized LogRecords.</p>
         &copy; Copyright 2013, Brian E. Granger &amp; Min Ragan-Kelley.  
 ØMQ logo © iMatix Corportation, used under the Creative Commons Attribution-Share Alike 3.0 License.  
 Python logo ™ of the Python Software Foundation, used by Min RK with permission from the Foundation.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

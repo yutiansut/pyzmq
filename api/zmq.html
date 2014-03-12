@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>zmq &mdash; PyZMQ 14.0.1 documentation</title>
+    <title>zmq &mdash; PyZMQ 14.1.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.0.1',
+        VERSION:     '14.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/zeromq.ico"/>
-    <link rel="top" title="PyZMQ 14.0.1 documentation" href="../index.html" />
+    <link rel="top" title="PyZMQ 14.1.0 documentation" href="../index.html" />
     <link rel="up" title="The PyZMQ API" href="index.html" />
     <link rel="next" title="devices" href="zmq.devices.html" />
     <link rel="prev" title="The PyZMQ API" href="index.html" /> 
@@ -128,7 +128,7 @@
 <h3><a class="reference internal" href="#zmq.Context" title="zmq.Context"><tt class="xref py py-class docutils literal"><span class="pre">Context</span></tt></a><a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
 <dt id="zmq.Context">
-<em class="property">class </em><tt class="descclassname">zmq.</tt><tt class="descname">Context</tt><big>(</big><em>io_threads=1</em><big>)</big><a class="headerlink" href="#zmq.Context" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">zmq.</tt><tt class="descname">Context</tt><big>(</big><em>io_threads=1</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#zmq.Context" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a zmq Context</p>
 <p>A zmq Context creates sockets via its <tt class="docutils literal"><span class="pre">ctx.socket</span></tt> method.</p>
 <dl class="attribute">
@@ -158,10 +158,10 @@ If there are active sockets in other threads, this must not be called.</p>
 <p>See the 0MQ API documentation for zmq_ctx_get
 for details on specific options.</p>
 <div class="versionadded">
-<p><span>New in version libzmq-3.2.</span></p>
+<p><span class="versionmodified">New in version libzmq-3.2.</span></p>
 </div>
 <div class="versionadded">
-<p><span>New in version 13.0.</span></p>
+<p><span class="versionmodified">New in version 13.0.</span></p>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -191,6 +191,9 @@ version of libzmq.  Examples include:</p>
 <dt id="zmq.Context.getsockopt">
 <tt class="descname">getsockopt</tt><big>(</big><em>opt</em><big>)</big><a class="headerlink" href="#zmq.Context.getsockopt" title="Permalink to this definition">¶</a></dt>
 <dd><p>get default socket options for new sockets created by this Context</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 13.0.</span></p>
+</div>
 </dd></dl>
 
 <dl class="classmethod">
@@ -222,10 +225,10 @@ but not require the argument for simpler applications:</p>
 <p>See the 0MQ API documentation for zmq_ctx_set
 for details on specific options.</p>
 <div class="versionadded">
-<p><span>New in version libzmq-3.2.</span></p>
+<p><span class="versionmodified">New in version libzmq-3.2.</span></p>
 </div>
 <div class="versionadded">
-<p><span>New in version 13.0.</span></p>
+<p><span class="versionmodified">New in version 13.0.</span></p>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -253,6 +256,30 @@ version of libzmq.  Examples include:</p>
 <dt id="zmq.Context.setsockopt">
 <tt class="descname">setsockopt</tt><big>(</big><em>opt</em>, <em>value</em><big>)</big><a class="headerlink" href="#zmq.Context.setsockopt" title="Permalink to this definition">¶</a></dt>
 <dd><p>set default socket options for new sockets created by this Context</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 13.0.</span></p>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="zmq.Context.shadow">
+<em class="property">classmethod </em><tt class="descname">shadow</tt><big>(</big><em>address</em><big>)</big><a class="headerlink" href="#zmq.Context.shadow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shadow an existing libzmq context</p>
+<p>address is the integer address of the libzmq context
+or an FFI pointer to it.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 14.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="zmq.Context.shadow_pyczmq">
+<em class="property">classmethod </em><tt class="descname">shadow_pyczmq</tt><big>(</big><em>ctx</em><big>)</big><a class="headerlink" href="#zmq.Context.shadow_pyczmq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shadow an existing pyczmq context</p>
+<p>ctx is the FFI <cite>zctx_t *</cite> pointer</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 14.1.</span></p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -280,6 +307,12 @@ REQ, REP, PUB, SUB, PAIR, DEALER, ROUTER, PULL, PUSH, etc.</p>
 <dd><p>Close or terminate the context.</p>
 <p>This can be called to close the context by hand. If this is not called,
 the context will automatically be closed when it is garbage collected.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="zmq.Context.underlying">
+<tt class="descname">underlying</tt><a class="headerlink" href="#zmq.Context.underlying" title="Permalink to this definition">¶</a></dt>
+<dd><p>The address of the underlying libzmq context</p>
 </dd></dl>
 
 </dd></dl>
@@ -408,10 +441,10 @@ encoded to utf-8 first.</p>
 <tt class="descname">disconnect</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.Socket.disconnect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disconnect from a remote 0MQ socket (undoes a call to connect).</p>
 <div class="versionadded">
-<p><span>New in version libzmq-3.2.</span></p>
+<p><span class="versionmodified">New in version libzmq-3.2.</span></p>
 </div>
 <div class="versionadded">
-<p><span>New in version 13.0.</span></p>
+<p><span class="versionmodified">New in version 13.0.</span></p>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -471,10 +504,10 @@ version of libzmq.  Examples include:</p>
 <tt class="descname">get_monitor_socket</tt><big>(</big><em>events=None</em>, <em>addr=None</em><big>)</big><a class="headerlink" href="#zmq.Socket.get_monitor_socket" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a connected PAIR socket ready to receive the event notifications.</p>
 <div class="versionadded">
-<p><span>New in version libzmq-4.0.</span></p>
+<p><span class="versionmodified">New in version libzmq-4.0.</span></p>
 </div>
 <div class="versionadded">
-<p><span>New in version 14.0.</span></p>
+<p><span class="versionmodified">New in version 14.0.</span></p>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -581,7 +614,7 @@ version of libzmq.  Examples include:</p>
 
 <dl class="attribute">
 <dt id="zmq.Socket.hwm">
-<tt class="descname">hwm</tt><em class="property"> None</em><a class="headerlink" href="#zmq.Socket.hwm" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">hwm</tt><a class="headerlink" href="#zmq.Socket.hwm" title="Permalink to this definition">¶</a></dt>
 <dd><p>get the High Water Mark</p>
 <p>On libzmq ≥ 3, this gets SNDHWM if available, otherwise RCVHWM</p>
 </dd></dl>
@@ -689,8 +722,9 @@ otherwise it will be bytes.</p>
 
 <dl class="method">
 <dt id="zmq.Socket.recv_json">
-<tt class="descname">recv_json</tt><big>(</big><em>flags=0</em><big>)</big><a class="headerlink" href="#zmq.Socket.recv_json" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">recv_json</tt><big>(</big><em>flags=0</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#zmq.Socket.recv_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>receive a Python object as a message using json to serialize</p>
+<p>Keyword arguments are passed on to json.loads</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -861,19 +895,20 @@ be True until the send is completed.</p>
 
 <dl class="method">
 <dt id="zmq.Socket.send_json">
-<tt class="descname">send_json</tt><big>(</big><em>obj</em>, <em>flags=0</em><big>)</big><a class="headerlink" href="#zmq.Socket.send_json" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">send_json</tt><big>(</big><em>obj</em>, <em>flags=0</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#zmq.Socket.send_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>send a Python object as a message using json to serialize</p>
+<p>Keyword arguments are passed on to json.loads</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>obj</strong> : Python object</p>
 <blockquote>
-<div><p>The Python object to send.</p>
+<div><p>The Python object to send</p>
 </div></blockquote>
 <p><strong>flags</strong> : int</p>
 <blockquote class="last">
-<div><p>Any valid send flag.</p>
+<div><p>Any valid send flag</p>
 </div></blockquote>
 </td>
 </tr>
@@ -952,7 +987,7 @@ support.</p>
 
 <dl class="method">
 <dt id="zmq.Socket.send_string">
-<tt class="descname">send_string</tt><big>(</big><em>u</em>, <em>flags=0</em>, <em>copy=False</em>, <em>encoding='utf-8'</em><big>)</big><a class="headerlink" href="#zmq.Socket.send_string" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">send_string</tt><big>(</big><em>u</em>, <em>flags=0</em>, <em>copy=True</em>, <em>encoding='utf-8'</em><big>)</big><a class="headerlink" href="#zmq.Socket.send_string" title="Permalink to this definition">¶</a></dt>
 <dd><p>send a Python unicode string as a message with an encoding</p>
 <p>0MQ communicates with raw bytes, so you must encode/decode
 text (unicode on py2, str on py3) around 0MQ.</p>
@@ -1097,9 +1132,20 @@ UNSUBSCRIBE, IDENTITY</p>
 </table>
 </dd></dl>
 
+<dl class="classmethod">
+<dt id="zmq.Socket.shadow">
+<em class="property">classmethod </em><tt class="descname">shadow</tt><big>(</big><em>address</em><big>)</big><a class="headerlink" href="#zmq.Socket.shadow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shadow an existing libzmq socket</p>
+<p>address is the integer address of the libzmq socket
+or an FFI pointer to it.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 14.1.</span></p>
+</div>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="zmq.Socket.socket_type">
-<tt class="descname">socket_type</tt><em class="property"> None</em><a class="headerlink" href="#zmq.Socket.socket_type" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">socket_type</tt><a class="headerlink" href="#zmq.Socket.socket_type" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1107,10 +1153,10 @@ UNSUBSCRIBE, IDENTITY</p>
 <tt class="descname">unbind</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.Socket.unbind" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unbind from an address (undoes a call to bind).</p>
 <div class="versionadded">
-<p><span>New in version libzmq-3.2.</span></p>
+<p><span class="versionmodified">New in version libzmq-3.2.</span></p>
 </div>
 <div class="versionadded">
-<p><span>New in version 13.0.</span></p>
+<p><span class="versionmodified">New in version 13.0.</span></p>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1129,6 +1175,12 @@ encoded to utf-8 first.</p>
 </table>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="zmq.Socket.underlying">
+<tt class="descname">underlying</tt><a class="headerlink" href="#zmq.Socket.underlying" title="Permalink to this definition">¶</a></dt>
+<dd><p>The address of the underlying libzmq socket</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -1139,13 +1191,13 @@ encoded to utf-8 first.</p>
 <em class="property">class </em><tt class="descclassname">zmq.</tt><tt class="descname">Frame</tt><a class="headerlink" href="#zmq.Frame" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="zmq.Frame.buffer">
-<tt class="descname">buffer</tt><em class="property"> None</em><a class="headerlink" href="#zmq.Frame.buffer" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">buffer</tt><a class="headerlink" href="#zmq.Frame.buffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>A read-only buffer view of the message contents.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="zmq.Frame.bytes">
-<tt class="descname">bytes</tt><em class="property"> None</em><a class="headerlink" href="#zmq.Frame.bytes" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">bytes</tt><a class="headerlink" href="#zmq.Frame.bytes" title="Permalink to this definition">¶</a></dt>
 <dd><p>The message content as a Python bytes object.</p>
 <p>The first time this property is accessed, a copy of the message 
 contents is made. From then on that same copy of the message is
@@ -1159,10 +1211,10 @@ returned.</p>
 <p>See the 0MQ API documentation for zmq_msg_get
 for details on specific options.</p>
 <div class="versionadded">
-<p><span>New in version libzmq-3.2.</span></p>
+<p><span class="versionmodified">New in version libzmq-3.2.</span></p>
 </div>
 <div class="versionadded">
-<p><span>New in version 13.0.</span></p>
+<p><span class="versionmodified">New in version 13.0.</span></p>
 </div>
 </dd></dl>
 
@@ -1173,10 +1225,10 @@ for details on specific options.</p>
 <p>See the 0MQ API documentation for zmq_msg_set
 for details on specific options.</p>
 <div class="versionadded">
-<p><span>New in version libzmq-3.2.</span></p>
+<p><span class="versionmodified">New in version libzmq-3.2.</span></p>
 </div>
 <div class="versionadded">
-<p><span>New in version 13.0.</span></p>
+<p><span class="versionmodified">New in version 13.0.</span></p>
 </div>
 </dd></dl>
 
@@ -1210,7 +1262,7 @@ actual Messages.</p>
 </table>
 <dl class="attribute">
 <dt id="zmq.MessageTracker.done">
-<tt class="descname">done</tt><em class="property"> None</em><a class="headerlink" href="#zmq.MessageTracker.done" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">done</tt><a class="headerlink" href="#zmq.MessageTracker.done" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is 0MQ completely done with the message(s) being tracked?</p>
 </dd></dl>
 
@@ -1414,7 +1466,7 @@ used.</p>
 <em class="property">class </em><tt class="descclassname">zmq.</tt><tt class="descname">Again</tt><big>(</big><em>errno=None</em>, <em>msg=None</em><big>)</big><a class="headerlink" href="#zmq.Again" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrapper for zmq.EAGAIN</p>
 <div class="versionadded">
-<p><span>New in version 13.0.</span></p>
+<p><span class="versionmodified">New in version 13.0.</span></p>
 </div>
 </dd></dl>
 
@@ -1426,7 +1478,7 @@ used.</p>
 <em class="property">class </em><tt class="descclassname">zmq.</tt><tt class="descname">ContextTerminated</tt><big>(</big><em>errno=None</em>, <em>msg=None</em><big>)</big><a class="headerlink" href="#zmq.ContextTerminated" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrapper for zmq.ETERM</p>
 <div class="versionadded">
-<p><span>New in version 13.0.</span></p>
+<p><span class="versionmodified">New in version 13.0.</span></p>
 </div>
 </dd></dl>
 
@@ -1493,7 +1545,7 @@ used.</p>
 <tt class="descclassname">zmq.</tt><tt class="descname">device</tt><big>(</big><em>device_type</em>, <em>frontend</em>, <em>backend</em><big>)</big><a class="headerlink" href="#zmq.device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start a zeromq device.</p>
 <div class="deprecated">
-<p><span>Deprecated since version libzmq-3.2: </span>Use zmq.proxy</p>
+<p><span class="versionmodified">Deprecated since version libzmq-3.2: </span>Use zmq.proxy</p>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1522,10 +1574,10 @@ used.</p>
 <tt class="descclassname">zmq.</tt><tt class="descname">proxy</tt><big>(</big><em>frontend</em>, <em>backend</em>, <em>capture</em><big>)</big><a class="headerlink" href="#zmq.proxy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start a zeromq proxy (replacement for device).</p>
 <div class="versionadded">
-<p><span>New in version libzmq-3.2.</span></p>
+<p><span class="versionmodified">New in version libzmq-3.2.</span></p>
 </div>
 <div class="versionadded">
-<p><span>New in version 13.0.</span></p>
+<p><span class="versionmodified">New in version 13.0.</span></p>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1555,10 +1607,10 @@ used.</p>
 <dd><p>generate a Z85 keypair for use with zmq.CURVE security</p>
 <p>Requires libzmq (≥ 4.0) to have been linked with libsodium.</p>
 <div class="versionadded">
-<p><span>New in version libzmq-4.0.</span></p>
+<p><span class="versionmodified">New in version libzmq-4.0.</span></p>
 </div>
 <div class="versionadded">
-<p><span>New in version 14.0.</span></p>
+<p><span class="versionmodified">New in version 14.0.</span></p>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1615,7 +1667,7 @@ used.</p>
         &copy; Copyright 2013, Brian E. Granger &amp; Min Ragan-Kelley.  
 ØMQ logo © iMatix Corportation, used under the Creative Commons Attribution-Share Alike 3.0 License.  
 Python logo ™ of the Python Software Foundation, used by Min RK with permission from the Foundation.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>
