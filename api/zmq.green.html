@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>green &mdash; PyZMQ 14.1.0 documentation</title>
+    <title>green &mdash; PyZMQ 14.1.1 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.1.0',
+        VERSION:     '14.1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/zeromq.ico"/>
-    <link rel="top" title="PyZMQ 14.1.0 documentation" href="../index.html" />
+    <link rel="top" title="PyZMQ 14.1.1 documentation" href="../index.html" />
     <link rel="up" title="The PyZMQ API" href="index.html" />
     <link rel="next" title="eventloop.ioloop" href="generated/zmq.eventloop.ioloop.html" />
     <link rel="prev" title="devices" href="zmq.devices.html" /> 
@@ -63,10 +63,7 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">green</a><ul>
-<li><a class="reference internal" href="#module-zmq.green">Module: <tt class="docutils literal"><span class="pre">green</span></tt></a><ul>
-<li><a class="reference internal" href="#usage">Usage</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#module-green">Module: <tt class="docutils literal"><span class="pre">green</span></tt></a></li>
 </ul>
 </li>
 </ul>
@@ -105,20 +102,8 @@
             
   <div class="section" id="green">
 <h1>green<a class="headerlink" href="#green" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-zmq.green">
-<span id="module-green"></span><h2>Module: <tt class="xref py py-mod docutils literal"><span class="pre">green</span></tt><a class="headerlink" href="#module-zmq.green" title="Permalink to this headline">¶</a></h2>
-<p>zmq.green - gevent compatibility with zeromq.</p>
-<div class="section" id="usage">
-<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
-<p>Instead of importing zmq directly, do so in the following manner:</p>
-<blockquote>
-<div>import zmq.green as zmq</div></blockquote>
-<p>Any calls that would have blocked the current thread will now only block the
-current green thread.</p>
-<p>This compatibility is accomplished by ensuring the nonblocking flag is set
-before any blocking operation and the ØMQ file descriptor is polled internally
-to trigger needed events.</p>
-</div>
+<div class="section" id="module-green">
+<h2>Module: <tt class="xref py py-mod docutils literal"><span class="pre">green</span></tt><a class="headerlink" href="#module-green" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
