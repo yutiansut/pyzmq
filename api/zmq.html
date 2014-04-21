@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>zmq &mdash; PyZMQ 14.1.1 documentation</title>
+    <title>zmq &mdash; PyZMQ 14.2.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.1.1',
+        VERSION:     '14.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/zeromq.ico"/>
-    <link rel="top" title="PyZMQ 14.1.1 documentation" href="../index.html" />
+    <link rel="top" title="PyZMQ 14.2.0 documentation" href="../index.html" />
     <link rel="up" title="The PyZMQ API" href="index.html" />
     <link rel="next" title="devices" href="zmq.devices.html" />
     <link rel="prev" title="The PyZMQ API" href="index.html" /> 
@@ -76,6 +76,7 @@
 </li>
 <li><a class="reference internal" href="#exceptions">Exceptions</a><ul>
 <li><a class="reference internal" href="#zmqerror"><tt class="docutils literal"><span class="pre">ZMQError</span></tt></a></li>
+<li><a class="reference internal" href="#zmqversionerror"><tt class="docutils literal"><span class="pre">ZMQVersionError</span></tt></a></li>
 <li><a class="reference internal" href="#again"><tt class="docutils literal"><span class="pre">Again</span></tt></a></li>
 <li><a class="reference internal" href="#contextterminated"><tt class="docutils literal"><span class="pre">ContextTerminated</span></tt></a></li>
 <li><a class="reference internal" href="#notdone"><tt class="docutils literal"><span class="pre">NotDone</span></tt></a></li>
@@ -624,6 +625,8 @@ version of libzmq.  Examples include:</p>
 <tt class="descname">monitor</tt><big>(</big><em>addr</em>, <em>flags</em><big>)</big><a class="headerlink" href="#zmq.Socket.monitor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start publishing socket events on inproc.
 See libzmq docs for zmq_monitor for details.</p>
+<p>While this function is available from libzmq 3.2,
+pyzmq cannot parse monitor messages from libzmq prior to 4.0.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1456,6 +1459,18 @@ used.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+</div>
+<div class="section" id="zmqversionerror">
+<h3><a class="reference internal" href="#zmq.ZMQVersionError" title="zmq.ZMQVersionError"><tt class="xref py py-class docutils literal"><span class="pre">ZMQVersionError</span></tt></a><a class="headerlink" href="#zmqversionerror" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="zmq.ZMQVersionError">
+<em class="property">class </em><tt class="descclassname">zmq.</tt><tt class="descname">ZMQVersionError</tt><big>(</big><em>min_version</em>, <em>msg='Feature'</em><big>)</big><a class="headerlink" href="#zmq.ZMQVersionError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raised when a feature is not provided by the linked version of libzmq.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 14.2.</span></p>
+</div>
 </dd></dl>
 
 </div>
