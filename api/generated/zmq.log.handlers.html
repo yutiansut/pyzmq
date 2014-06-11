@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>log.handlers &mdash; PyZMQ 14.3.0 documentation</title>
+    <title>log.handlers &mdash; PyZMQ 14.4.0-dev documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.3.0',
+        VERSION:     '14.4.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/zeromq.ico"/>
-    <link rel="top" title="PyZMQ 14.3.0 documentation" href="../../index.html" />
+    <link rel="top" title="PyZMQ 14.4.0-dev documentation" href="../../index.html" />
     <link rel="up" title="The PyZMQ API" href="../index.html" />
     <link rel="next" title="ssh.tunnel" href="zmq.ssh.tunnel.html" />
     <link rel="prev" title="auth.ioloop" href="../zmq.auth.ioloop.html" /> 
@@ -63,10 +63,7 @@
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">log.handlers</a><ul>
-<li><a class="reference internal" href="#module-zmq.log.handlers">Module: <tt class="docutils literal"><span class="pre">log.handlers</span></tt></a><ul>
-<li><a class="reference internal" href="#authors">Authors</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#module-zmq.log.handlers">Module: <tt class="docutils literal"><span class="pre">log.handlers</span></tt></a></li>
 <li><a class="reference internal" href="#classes">Classes</a><ul>
 <li><a class="reference internal" href="#pubhandler"><tt class="docutils literal"><span class="pre">PUBHandler</span></tt></a></li>
 <li><a class="reference internal" href="#topiclogger"><tt class="docutils literal"><span class="pre">TopicLogger</span></tt></a></li>
@@ -129,12 +126,6 @@ PUB socket.</p>
 <p>Code adapted from StarCluster:</p>
 <blockquote>
 <div><a class="reference external" href="http://github.com/jtriley/StarCluster/blob/master/starcluster/logger.py">http://github.com/jtriley/StarCluster/blob/master/starcluster/logger.py</a></div></blockquote>
-<div class="section" id="authors">
-<h3>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Min RK</li>
-</ul>
-</div>
 </div>
 <div class="section" id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
@@ -219,7 +210,7 @@ subclasses.</p>
 
 <dl class="attribute">
 <dt id="zmq.log.handlers.PUBHandler.formatters">
-<tt class="descname">formatters</tt><em class="property"> = {40: &lt;logging.Formatter object at 0x106d90bd0&gt;, 10: &lt;logging.Formatter object at 0x106d90b10&gt;, 20: &lt;logging.Formatter object at 0x106d90b50&gt;, 50: &lt;logging.Formatter object at 0x106d90c10&gt;, 30: &lt;logging.Formatter object at 0x106d90b90&gt;}</em><a class="headerlink" href="#zmq.log.handlers.PUBHandler.formatters" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">formatters</tt><em class="property"> = {40: &lt;logging.Formatter object at 0x109096810&gt;, 10: &lt;logging.Formatter object at 0x10907aa10&gt;, 20: &lt;logging.Formatter object at 0x109096790&gt;, 50: &lt;logging.Formatter object at 0x109096850&gt;, 30: &lt;logging.Formatter object at 0x1090967d0&gt;}</em><a class="headerlink" href="#zmq.log.handlers.PUBHandler.formatters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -442,7 +433,7 @@ specialized LogRecords.</p>
 
 <dl class="attribute">
 <dt id="zmq.log.handlers.TopicLogger.manager">
-<tt class="descname">manager</tt><em class="property"> = &lt;logging.Manager object at 0x104357410&gt;</em><a class="headerlink" href="#zmq.log.handlers.TopicLogger.manager" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">manager</tt><em class="property"> = &lt;logging.Manager object at 0x106d34f50&gt;</em><a class="headerlink" href="#zmq.log.handlers.TopicLogger.manager" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -459,7 +450,7 @@ specialized LogRecords.</p>
 
 <dl class="attribute">
 <dt id="zmq.log.handlers.TopicLogger.root">
-<tt class="descname">root</tt><em class="property"> = &lt;logging.RootLogger object at 0x104357350&gt;</em><a class="headerlink" href="#zmq.log.handlers.TopicLogger.root" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">root</tt><em class="property"> = &lt;logging.RootLogger object at 0x106d34e90&gt;</em><a class="headerlink" href="#zmq.log.handlers.TopicLogger.root" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Eventloops and PyZMQ &mdash; PyZMQ 14.3.0 documentation</title>
+    <title>Eventloops and PyZMQ &mdash; PyZMQ 14.4.0-dev documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '14.3.0',
+        VERSION:     '14.4.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/zeromq.ico"/>
-    <link rel="top" title="PyZMQ 14.3.0 documentation" href="index.html" />
+    <link rel="top" title="PyZMQ 14.4.0-dev documentation" href="index.html" />
     <link rel="next" title="Asynchronous Logging via PyZMQ" href="logging.html" />
     <link rel="prev" title="Devices in PyZMQ" href="devices.html" /> 
   </head>
@@ -135,20 +135,33 @@ created, and proceeding would result in not all objects being associated with th
 IOLoop.</p>
 <p>It is possible to use PyZMQ sockets with tornado <em>without</em> calling <a class="reference internal" href="api/generated/zmq.eventloop.ioloop.html#zmq.eventloop.ioloop.install" title="zmq.eventloop.ioloop.install"><tt class="xref py py-func docutils literal"><span class="pre">ioloop.install()</span></tt></a>,
 but it is less convenient. First, you must instruct the tornado IOLoop to use the zmq poller:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">tornado.ioloop</span> <span class="kn">import</span> <span class="n">IOLoop</span>
-<span class="kn">from</span> <span class="nn">zmq.eventloop.ioloop</span> <span class="kn">import</span> <span class="n">ZMQPoller</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">zmq.eventloop.ioloop</span> <span class="kn">import</span> <span class="n">ZMQIOLoop</span>
 
-<span class="n">loop</span> <span class="o">=</span> <span class="n">IOLoop</span><span class="p">(</span><span class="n">ZMQPoller</span><span class="p">())</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">ZMQIOLoop</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Then, when you instantiate tornado and ZMQStream objects, you must pass the <cite>io_loop</cite>
-argument to ensure that they use this loop, instead of the global instance.  You can
-install this IOLoop as the global tornado instance, with:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">loop</span><span class="o">.</span><span class="n">install</span><span class="p">()</span>
+argument to ensure that they use this loop, instead of the global instance.</p>
+<p>This is especially useful for writing tests, such as this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">tornado.testing</span> <span class="kn">import</span> <span class="n">AsyncTestCase</span>
+<span class="kn">from</span> <span class="nn">zmq.eventloop.ioloop</span> <span class="kn">import</span> <span class="n">ZMQIOLoop</span>
+<span class="kn">from</span> <span class="nn">zmq.eventloop.zmqstream</span> <span class="kn">import</span> <span class="n">ZMQStream</span>
+
+<span class="k">class</span> <span class="nc">TestZMQBridge</span><span class="p">(</span><span class="n">AsyncTestCase</span><span class="p">):</span>
+
+     <span class="c"># Use a ZMQ-compatible I/O loop so that we can use `ZMQStream`.</span>
+     <span class="k">def</span> <span class="nf">get_new_ioloop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="k">return</span> <span class="n">ZMQIOLoop</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>but it will <strong>NOT</strong> be the global <em>pyzmq</em> IOLoop instance, so it must still be passed to
-your ZMQStream constructors.</p>
+<p>You can also manually install this IOLoop as the global tornado instance, with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">zmq.eventloop.ioloop</span> <span class="kn">import</span> <span class="n">ZMQIOLoop</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">ZMQIOLoop</span><span class="p">()</span>
+<span class="n">loop</span><span class="o">.</span><span class="n">install</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>but it will <strong>NOT</strong> be the global <em>pyzmq</em> IOLoop instance, so it must still be
+passed to your ZMQStream constructors.</p>
 </div>
 <div class="section" id="send">
 <h3><tt class="xref py py-meth docutils literal"><span class="pre">send()</span></tt><a class="headerlink" href="#send" title="Permalink to this headline">¶</a></h3>

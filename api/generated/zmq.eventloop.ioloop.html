@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>eventloop.ioloop &mdash; PyZMQ 14.3.0 documentation</title>
+    <title>eventloop.ioloop &mdash; PyZMQ 14.4.0-dev documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.3.0',
+        VERSION:     '14.4.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/zeromq.ico"/>
-    <link rel="top" title="PyZMQ 14.3.0 documentation" href="../../index.html" />
+    <link rel="top" title="PyZMQ 14.4.0-dev documentation" href="../../index.html" />
     <link rel="up" title="The PyZMQ API" href="../index.html" />
     <link rel="next" title="eventloop.zmqstream" href="zmq.eventloop.zmqstream.html" />
     <link rel="prev" title="green" href="../zmq.green.html" /> 
@@ -63,10 +63,7 @@
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">eventloop.ioloop</a><ul>
-<li><a class="reference internal" href="#module-zmq.eventloop.ioloop">Module: <tt class="docutils literal"><span class="pre">eventloop.ioloop</span></tt></a><ul>
-<li><a class="reference internal" href="#authors">Authors</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#module-zmq.eventloop.ioloop">Module: <tt class="docutils literal"><span class="pre">eventloop.ioloop</span></tt></a></li>
 <li><a class="reference internal" href="#classes">Classes</a><ul>
 <li><a class="reference internal" href="#delayedcallback"><tt class="docutils literal"><span class="pre">DelayedCallback</span></tt></a></li>
 <li><a class="reference internal" href="#zmqioloop"><tt class="docutils literal"><span class="pre">ZMQIOLoop</span></tt></a></li>
@@ -120,12 +117,6 @@ otherwise we ship a minimal subset of tornado in zmq.eventloop.minitornado.</p>
 <p>The minimal shipped version of tornado&#8217;s IOLoop does not include
 support for concurrent futures - this will only be available if you
 have tornado ≥ 3.0.</p>
-<div class="section" id="authors">
-<h3>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>MinRK</li>
-</ul>
-</div>
 </div>
 <div class="section" id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
@@ -213,10 +204,33 @@ have tornado ≥ 3.0.</p>
 <em class="property">static </em><tt class="descname">clear_current</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop.clear_current" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="staticmethod">
+<dt id="zmq.eventloop.ioloop.ZMQIOLoop.clear_instance">
+<em class="property">static </em><tt class="descname">clear_instance</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop.clear_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the global <cite>IOLoop</cite> instance.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.3.</span></p>
+</div>
+</dd></dl>
+
 <dl class="method">
 <dt id="zmq.eventloop.ioloop.ZMQIOLoop.close">
 <tt class="descname">close</tt><big>(</big><em>all_fds=False</em><big>)</big><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop.close" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="zmq.eventloop.ioloop.ZMQIOLoop.close_fd">
+<tt class="descname">close_fd</tt><big>(</big><em>fd</em><big>)</big><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop.close_fd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility method to close an <tt class="docutils literal"><span class="pre">fd</span></tt>.</p>
+<p>If <tt class="docutils literal"><span class="pre">fd</span></tt> is a file-like object, we close it directly; otherwise
+we use <cite>os.close</cite>.</p>
+<p>This method is provided for use by <cite>IOLoop</cite> subclasses (in
+implementations of <tt class="docutils literal"><span class="pre">IOLoop.close(all_fds=True)</span></tt> and should
+not generally be used by application code.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.3.</span></p>
+</div>
+</dd></dl>
 
 <dl class="classmethod">
 <dt id="zmq.eventloop.ioloop.ZMQIOLoop.configurable_base">
@@ -368,6 +382,24 @@ if __name__ == &#39;__main__&#39;:
 <dt id="zmq.eventloop.ioloop.ZMQIOLoop.set_blocking_signal_threshold">
 <tt class="descname">set_blocking_signal_threshold</tt><big>(</big><em>seconds</em>, <em>action</em><big>)</big><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop.set_blocking_signal_threshold" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="zmq.eventloop.ioloop.ZMQIOLoop.split_fd">
+<tt class="descname">split_fd</tt><big>(</big><em>fd</em><big>)</big><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop.split_fd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an (fd, obj) pair from an <tt class="docutils literal"><span class="pre">fd</span></tt> parameter.</p>
+<p>We accept both raw file descriptors and file-like objects as
+input to <cite>add_handler</cite> and related methods.  When a file-like
+object is passed, we must retain the object itself so we can
+close it correctly when the <cite>IOLoop</cite> shuts down, but the
+poller interfaces favor file descriptors (they will accept
+file-like objects and call <tt class="docutils literal"><span class="pre">fileno()</span></tt> for you, but they
+always return the descriptor itself).</p>
+<p>This method is provided for use by <cite>IOLoop</cite> subclasses and should
+not generally be used by application code.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 3.3.</span></p>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="zmq.eventloop.ioloop.ZMQIOLoop.start">
