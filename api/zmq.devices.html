@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>devices &mdash; PyZMQ 14.4.0-dev documentation</title>
+    <title>devices &mdash; PyZMQ 14.4.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '14.4.0-dev',
+        VERSION:     '14.4.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/zeromq.ico"/>
-    <link rel="top" title="PyZMQ 14.4.0-dev documentation" href="../index.html" />
+    <link rel="top" title="PyZMQ 14.4.0 documentation" href="../index.html" />
     <link rel="up" title="The PyZMQ API" href="index.html" />
     <link rel="next" title="green" href="zmq.green.html" />
     <link rel="prev" title="zmq" href="zmq.html" /> 
@@ -219,44 +219,42 @@ connections for the sockets.</p>
 <div><p>The 0MQ Device type</p>
 </div></blockquote>
 <p><strong>{in|out}_type</strong> : int</p>
-<blockquote>
+<blockquote class="last">
 <div><p>zmq socket types, to be passed later to context.socket(). e.g.
 zmq.PUB, zmq.SUB, zmq.REQ. If out_type is &lt; 0, then in_socket is used
 for both in_socket and out_socket.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Attributes:</th><td class="field-body"><p class="first"><strong>daemon</strong> : int</p>
-<blockquote>
-<div><p>sets whether the thread should be run as a daemon
-Default is true, because if it is false, the thread will not
-exit unless it is killed</p>
-</div></blockquote>
-<p><strong>context_factory</strong> : callable (class attribute)</p>
-<blockquote>
-<div><p>Function for creating the Context. This will be Context.instance
-in ThreadDevices, and Context in ProcessDevices.  The only reason
-it is not instance() in ProcessDevices is that there may be a stale
-Context instance already initialized, and the forked environment
-should <em>never</em> try to use it.</p>
-</div></blockquote>
-</td>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="96%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>daemon</td>
+<td>(int) sets whether the thread should be run as a daemon Default is true, because if it is false, the thread will not exit unless it is killed</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Methods:</th><td class="field-body"><p class="first"><strong>bind_{in_out}(iface)</strong> :</p>
-<blockquote>
-<div><p>passthrough for <tt class="docutils literal"><span class="pre">{in|out}_socket.bind(iface)</span></tt>, to be called in the thread</p>
-</div></blockquote>
-<p><strong>connect_{in_out}(iface)</strong> :</p>
-<blockquote>
-<div><p>passthrough for <tt class="docutils literal"><span class="pre">{in|out}_socket.connect(iface)</span></tt>, to be called in the
-thread</p>
-</div></blockquote>
-<p><strong>setsockopt_{in_out}(opt,value)</strong> :</p>
-<blockquote class="last">
-<div><p>passthrough for <tt class="docutils literal"><span class="pre">{in|out}_socket.setsockopt(opt,</span> <span class="pre">value)</span></tt>, to be called in
-the thread</p>
-</div></blockquote>
-</td>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>bind_{in_out}(iface)</td>
+<td>passthrough for <tt class="docutils literal"><span class="pre">{in|out}_socket.bind(iface)</span></tt>, to be called in the thread</td>
+</tr>
+<tr class="row-even"><td>connect_{in_out}(iface)</td>
+<td>passthrough for <tt class="docutils literal"><span class="pre">{in|out}_socket.connect(iface)</span></tt>, to be called in the thread</td>
+</tr>
+<tr class="row-odd"><td>setsockopt_{in_out}(opt,value)</td>
+<td>passthrough for <tt class="docutils literal"><span class="pre">{in|out}_socket.setsockopt(opt,</span> <span class="pre">value)</span></tt>, to be called in the thread</td>
 </tr>
 </tbody>
 </table>
@@ -325,6 +323,19 @@ the thread</p>
 <em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">ThreadDevice</tt><big>(</big><em>device_type=3</em>, <em>in_type=None</em>, <em>out_type=None</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadDevice" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Device that will be run in a background Thread.</p>
 <p>See Device for details.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>launcher</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
 </dd></dl>
 
 </div>
@@ -335,11 +346,37 @@ the thread</p>
 <em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">ProcessDevice</tt><big>(</big><em>device_type=3</em>, <em>in_type=None</em>, <em>out_type=None</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Device that will be run in a background Process.</p>
 <p>See Device for details.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>launcher</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
 <dl class="attribute">
 <dt id="zmq.devices.ProcessDevice.context_factory">
 <tt class="descname">context_factory</tt><big>(</big><em>io_threads=1</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessDevice.context_factory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Callable that returns a context. Typically either Context.instance or Context,
 depending on whether the device should share the global instance or not.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>sockopts</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
 <p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Context</span></tt></p>
 </dd></dl>
 
@@ -361,6 +398,7 @@ monitor socket.</p>
 <p>A Proxy is a 3-socket ZMQ Device that functions just like a
 QUEUE, except each message is also sent out on the monitor socket.</p>
 <p>A PUB socket is the most logical choice for the mon_socket, but it is not required.</p>
+<p class="rubric">Methods</p>
 <dl class="method">
 <dt id="zmq.devices.Proxy.bind_mon">
 <tt class="descname">bind_mon</tt><big>(</big><em>addr</em><big>)</big><a class="headerlink" href="#zmq.devices.Proxy.bind_mon" title="Permalink to this definition">¶</a></dt>
@@ -391,6 +429,19 @@ QUEUE, except each message is also sent out on the monitor socket.</p>
 <dt id="zmq.devices.ThreadProxy">
 <em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">ThreadProxy</tt><big>(</big><em>in_type</em>, <em>out_type</em>, <em>mon_type=1</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadProxy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Proxy in a Thread. See Proxy for more.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>launcher</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
 </dd></dl>
 
 </div>
@@ -400,6 +451,19 @@ QUEUE, except each message is also sent out on the monitor socket.</p>
 <dt id="zmq.devices.ProcessProxy">
 <em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">ProcessProxy</tt><big>(</big><em>in_type</em>, <em>out_type</em>, <em>mon_type=1</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessProxy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Proxy in a Process. See Proxy for more.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>launcher</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
 </dd></dl>
 
 </div>
@@ -463,6 +527,7 @@ with a different prefix for each direction.</p>
 <p>If a message arrives on <cite>in_sock</cite>, it will be prefixed with <cite>in_prefix</cite> on the monitor socket.
 If it arrives on out_sock, it will be prefixed with <cite>out_prefix</cite>.</p>
 <p>A PUB socket is the most logical choice for the mon_socket, but it is not required.</p>
+<p class="rubric">Methods</p>
 </dd></dl>
 
 </div>
@@ -473,6 +538,19 @@ If it arrives on out_sock, it will be prefixed with <cite>out_prefix</cite>.</p>
 <em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">ThreadMonitoredQueue</tt><big>(</big><em>in_type</em>, <em>out_type</em>, <em>mon_type=1</em>, <em>in_prefix='in'</em>, <em>out_prefix='out'</em><big>)</big><a class="headerlink" href="#zmq.devices.ThreadMonitoredQueue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run zmq.monitored_queue in a background thread.</p>
 <p>See MonitoredQueue and Proxy for details.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>launcher</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
 </dd></dl>
 
 </div>
@@ -483,6 +561,19 @@ If it arrives on out_sock, it will be prefixed with <cite>out_prefix</cite>.</p>
 <em class="property">class </em><tt class="descclassname">zmq.devices.</tt><tt class="descname">ProcessMonitoredQueue</tt><big>(</big><em>in_type</em>, <em>out_type</em>, <em>mon_type=1</em>, <em>in_prefix='in'</em>, <em>out_prefix='out'</em><big>)</big><a class="headerlink" href="#zmq.devices.ProcessMonitoredQueue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run zmq.monitored_queue in a background thread.</p>
 <p>See MonitoredQueue and Proxy for details.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>launcher</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
 </dd></dl>
 
 </div>
@@ -521,7 +612,7 @@ If it arrives on out_sock, it will be prefixed with <cite>out_prefix</cite>.</p>
         &copy; Copyright 2013, Brian E. Granger &amp; Min Ragan-Kelley.  
 ØMQ logo © iMatix Corportation, used under the Creative Commons Attribution-Share Alike 3.0 License.  
 Python logo ™ of the Python Software Foundation, used by Min RK with permission from the Foundation.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>eventloop.ioloop &mdash; PyZMQ 14.4.0-dev documentation</title>
+    <title>eventloop.ioloop &mdash; PyZMQ 14.4.0 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '14.4.0-dev',
+        VERSION:     '14.4.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/zeromq.ico"/>
-    <link rel="top" title="PyZMQ 14.4.0-dev documentation" href="../../index.html" />
+    <link rel="top" title="PyZMQ 14.4.0 documentation" href="../../index.html" />
     <link rel="up" title="The PyZMQ API" href="../index.html" />
     <link rel="next" title="eventloop.zmqstream" href="zmq.eventloop.zmqstream.html" />
     <link rel="prev" title="green" href="../zmq.green.html" /> 
@@ -129,6 +129,7 @@ have tornado ≥ 3.0.</p>
 <p>The callback is called once, after callback_time milliseconds.</p>
 <p><cite>start</cite> must be called after the DelayedCallback is created.</p>
 <p>The timeout is calculated from when <cite>start</cite> is called.</p>
+<p class="rubric">Methods</p>
 <dl class="method">
 <dt id="zmq.eventloop.ioloop.DelayedCallback.start">
 <tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.eventloop.ioloop.DelayedCallback.start" title="Permalink to this definition">¶</a></dt>
@@ -150,6 +151,7 @@ have tornado ≥ 3.0.</p>
 <dt id="zmq.eventloop.ioloop.ZMQIOLoop">
 <em class="property">class </em><tt class="descclassname">zmq.eventloop.ioloop.</tt><tt class="descname">ZMQIOLoop</tt><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop" title="Permalink to this definition">¶</a></dt>
 <dd><p>ZMQ subclass of tornado&#8217;s IOLoop</p>
+<p class="rubric">Methods</p>
 <dl class="attribute">
 <dt id="zmq.eventloop.ioloop.ZMQIOLoop.ERROR">
 <tt class="descname">ERROR</tt><em class="property"> = 24</em><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop.ERROR" title="Permalink to this definition">¶</a></dt>
@@ -204,33 +206,10 @@ have tornado ≥ 3.0.</p>
 <em class="property">static </em><tt class="descname">clear_current</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop.clear_current" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="staticmethod">
-<dt id="zmq.eventloop.ioloop.ZMQIOLoop.clear_instance">
-<em class="property">static </em><tt class="descname">clear_instance</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop.clear_instance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Clear the global <cite>IOLoop</cite> instance.</p>
-<div class="versionadded">
-<p><span class="versionmodified">New in version 3.3.</span></p>
-</div>
-</dd></dl>
-
 <dl class="method">
 <dt id="zmq.eventloop.ioloop.ZMQIOLoop.close">
 <tt class="descname">close</tt><big>(</big><em>all_fds=False</em><big>)</big><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop.close" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="zmq.eventloop.ioloop.ZMQIOLoop.close_fd">
-<tt class="descname">close_fd</tt><big>(</big><em>fd</em><big>)</big><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop.close_fd" title="Permalink to this definition">¶</a></dt>
-<dd><p>Utility method to close an <tt class="docutils literal"><span class="pre">fd</span></tt>.</p>
-<p>If <tt class="docutils literal"><span class="pre">fd</span></tt> is a file-like object, we close it directly; otherwise
-we use <cite>os.close</cite>.</p>
-<p>This method is provided for use by <cite>IOLoop</cite> subclasses (in
-implementations of <tt class="docutils literal"><span class="pre">IOLoop.close(all_fds=True)</span></tt> and should
-not generally be used by application code.</p>
-<div class="versionadded">
-<p><span class="versionmodified">New in version 3.3.</span></p>
-</div>
-</dd></dl>
 
 <dl class="classmethod">
 <dt id="zmq.eventloop.ioloop.ZMQIOLoop.configurable_base">
@@ -384,24 +363,6 @@ if __name__ == &#39;__main__&#39;:
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="zmq.eventloop.ioloop.ZMQIOLoop.split_fd">
-<tt class="descname">split_fd</tt><big>(</big><em>fd</em><big>)</big><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop.split_fd" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns an (fd, obj) pair from an <tt class="docutils literal"><span class="pre">fd</span></tt> parameter.</p>
-<p>We accept both raw file descriptors and file-like objects as
-input to <cite>add_handler</cite> and related methods.  When a file-like
-object is passed, we must retain the object itself so we can
-close it correctly when the <cite>IOLoop</cite> shuts down, but the
-poller interfaces favor file descriptors (they will accept
-file-like objects and call <tt class="docutils literal"><span class="pre">fileno()</span></tt> for you, but they
-always return the descriptor itself).</p>
-<p>This method is provided for use by <cite>IOLoop</cite> subclasses and should
-not generally be used by application code.</p>
-<div class="versionadded">
-<p><span class="versionmodified">New in version 3.3.</span></p>
-</div>
-</dd></dl>
-
-<dl class="method">
 <dt id="zmq.eventloop.ioloop.ZMQIOLoop.start">
 <tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQIOLoop.start" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -432,6 +393,7 @@ not generally be used by application code.</p>
 <dd><p>A poller that can be used in the tornado IOLoop.</p>
 <p>This simply wraps a regular zmq.Poller, scaling the timeout
 by 1000, so that it is in seconds rather than milliseconds.</p>
+<p class="rubric">Methods</p>
 <dl class="method">
 <dt id="zmq.eventloop.ioloop.ZMQPoller.close">
 <tt class="descname">close</tt><big>(</big><big>)</big><a class="headerlink" href="#zmq.eventloop.ioloop.ZMQPoller.close" title="Permalink to this definition">¶</a></dt>
@@ -510,7 +472,7 @@ prior to calling this function.</p>
         &copy; Copyright 2013, Brian E. Granger &amp; Min Ragan-Kelley.  
 ØMQ logo © iMatix Corportation, used under the Creative Commons Attribution-Share Alike 3.0 License.  
 Python logo ™ of the Python Software Foundation, used by Min RK with permission from the Foundation.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>
