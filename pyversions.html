@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PyZMQ, Python2.5, and Python3 &mdash; PyZMQ 14.4.1 documentation</title>
+    <title>PyZMQ, Python2.5, and Python3 &mdash; PyZMQ 14.5.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '14.4.1',
+        VERSION:     '14.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/zeromq.ico"/>
-    <link rel="top" title="PyZMQ 14.4.1 documentation" href="index.html" />
+    <link rel="top" title="PyZMQ 14.5.0 documentation" href="index.html" />
     <link rel="next" title="PyZMQ and Unicode" href="unicode.html" />
     <link rel="prev" title="Tunneling PyZMQ Connections with SSH" href="ssh.html" /> 
   </head>
@@ -129,8 +129,8 @@ simply define the function as an empty exception raiser. The important thing is 
 symbols are defined to prevent compiler warnings and linking errors. Everywhere we use
 C-API functions that may not be available in a supported version, at the top of the file
 is the code:</p>
-<div class="highlight-guess"><div class="highlight"><pre><span class="n">cdef</span> <span class="k">extern</span> <span class="n">from</span> <span class="s">&quot;pyversion_compat.h&quot;</span><span class="o">:</span>
-    <span class="n">pass</span>
+<div class="highlight-guess"><div class="highlight"><pre>cdef extern from &quot;pyversion_compat.h&quot;:
+    pass
 </pre></div>
 </div>
 <p>This ensures that the symbols are defined in the Cython generated C-code. Higher level
