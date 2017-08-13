@@ -12,15 +12,7 @@ def _load_libzmq():
     # get values from os because ctypes are WRONG on pypy
     if dlopen:
         dlflags = sys.getdlopenflags()
-        # set RTLD_GLOBAL, unset RTLD_LOCAL
-        flags = ctypes.RTLD_GLOBAL | dlflags
-        # ctypes.RTLD_LOCAL is 0 on pypy, which is *wrong*
-        flags &= ~ getattr(os, 'RTLD_LOCAL', 4)
-        # # pypy needs RTLD_LAZY for some reason
-        if platform.python_implementation().lower() == 'pypy':
-            flags |= getattr(os, 'RTLD_LAZY', 1)
-            flags &= ~ getattr(os, 'RTLD_NOW', 2)
-        sys.setdlopenflags(flags)
+        sys.setdlopenflags(ctypes.RTLD_GLOBAL)
     try:
         from . import libzmq
     except ImportError:
